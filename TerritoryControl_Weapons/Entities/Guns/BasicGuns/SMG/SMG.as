@@ -36,7 +36,7 @@ void onInit(CBlob@ this)
 	settings.ENLARGE_FACTOR = 1; //Multiplier of how much cursor will enlarge as you shoot.
 	
 	//Recoil
-	settings.G_RECOIL = -8; //0 is default, adds recoil aiming up
+	settings.G_RECOIL = -11; //0 is default, adds recoil aiming up
 	settings.G_RANDOMX = false; //Should we randomly move x
 	settings.G_RANDOMY = false; //Should we randomly move y, it ignores g_recoil
 	settings.G_RECOILT = 4; //How long should recoil last, 10 is default, 30 = 1 second (like ticks)
