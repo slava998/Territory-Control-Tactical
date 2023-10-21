@@ -4,7 +4,11 @@ Or about creating global chaos, or building an industry, or roleplay, depending 
 The mod aims at Tactical, Team-Based, Competitive and more Realistic gameplay.
 
 Made by Slava. Hope TC by NoahTheLegend, Xeno, Skemonde, and FrankStain. Original TC by TFlippy and co.
+
 Server Host + some sprites - Peaceful Gay
+
 Help with code - Slait (Slait12)
+
 Main testers - Klon (KlonSiderPlay), Dokooo (Don77860163), Peaceful Gay, Slait, MuseOfAbuse (Samuel2745)
+
 Server setup help - Vlad
