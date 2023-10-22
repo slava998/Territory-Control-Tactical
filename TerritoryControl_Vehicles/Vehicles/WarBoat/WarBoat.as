@@ -1,8 +1,6 @@
 #include "VehicleCommon.as"
 #include "ClassSelectMenu.as";
 #include "StandardRespawnCommand.as";
-#include "GenericButtonCommon.as";
-#include "Costs.as";
 //#include "Requirements_Tech.as";
 
 // Boat logic
@@ -10,7 +8,7 @@
 void onInit(CBlob@ this)
 {
 	Vehicle_Setup(this,
-	              550.0f, // move speed
+	              307.0f, // move speed
 	              0.47f,  // turn speed
 	              Vec2f(0.0f, -5.0f), // jump out velocity
 	              true  // inventory access
@@ -45,14 +43,11 @@ void onInit(CBlob@ this)
 		}
 	}
 
-	this.Tag("respawn");
+	// this.Tag("respawn");
 
-	InitRespawnCommand(this);
-	InitClasses(this);
-	this.Tag("change class store inventory");
-
-	InitCosts();
-	this.set_s32("gold building amount", CTFCosts::warboat_gold);
+	// InitRespawnCommand(this);
+	// InitClasses(this);
+	// this.Tag("change class store inventory");
 
 	// additional shapes
 
@@ -134,7 +129,7 @@ void onInit(CBlob@ this)
 	this.SetMinimapRenderAlways(true);
 
 	// mounted bow
-	if (getNet().isServer())// && hasTech( this, "mounted bow"))
+	if (isServer())// && hasTech( this, "mounted bow"))
 	{
 		CBlob@ bow = server_CreateBlob("mounted_bow");
 		if (bow !is null)
@@ -162,6 +157,11 @@ void onTick(CBlob@ this)
 	if (time % 12 == 0)
 	{
 		Vehicle_DontRotateInWater(this);
+	}
+
+	if (!this.isInWater())
+	{
+		this.setVelocity(Vec2f(0, this.getVelocity().y));
 	}
 }
 
@@ -208,21 +208,20 @@ void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint@ attachedPoint)
 }
 
 
-void GetButtonsFor(CBlob@ this, CBlob@ caller)
-{
-	if (this.getDistanceTo(caller) > 96.0f) return;
-	if (!canSeeButtons(this, caller)) return;
+// void GetButtonsFor(CBlob@ this, CBlob@ caller)
+// {
+	// if (caller.getTeamNum() == this.getTeamNum())
+	// {
+		// CBitStream params;
+		// params.write_u16(caller.getNetworkID());
+		// CButton@ button = caller.CreateGenericButton("$change_class$", Vec2f(13, 4), this, SpawnCmd::buildMenu, getTranslatedString("Change class"), params);
+	// }
+// }
 
-	if (caller.getTeamNum() == this.getTeamNum())
-	{
-		caller.CreateGenericButton("$change_class$", Vec2f(13, 4), this, buildSpawnMenu, getTranslatedString("Change class"));
-	}
-}
-
-void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
-{
-	onRespawnCommand(this, cmd, params);
-}
+// void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
+// {
+	// onRespawnCommand(this, cmd, params);
+// }
 
 void onDie(CBlob@ this)
 {
