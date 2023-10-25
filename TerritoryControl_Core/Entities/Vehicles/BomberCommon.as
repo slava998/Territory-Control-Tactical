@@ -443,3 +443,29 @@ bool isInventoryAccessible(CBlob@ this, CBlob@ forBlob)
 	}
 	else return false;
 }
+
+void onAttach(CBlob@ this,CBlob@ attached,AttachmentPoint @attachedPoint)
+{
+	if (attached.hasTag("bomber")) return;
+
+	attached.Tag("invincible");
+	attached.Tag("invincibilityByVehicle");
+
+	VehicleInfo@ v;
+	if (!this.get("VehicleInfo", @v)) return;
+
+	Vehicle_onAttach(this,v,attached,attachedPoint);
+}
+
+void onDetach(CBlob@ this,CBlob@ detached,AttachmentPoint@ attachedPoint)
+{
+	if (detached.hasTag("bomber")) return;
+
+	detached.Untag("invincible");
+	detached.Untag("invincibilityByVehicle");
+
+	VehicleInfo@ v;
+	if (!this.get("VehicleInfo", @v))return;
+
+	Vehicle_onDetach(this, v, detached, attachedPoint);
+}

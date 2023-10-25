@@ -11,10 +11,11 @@ void onInit(CBlob@ this)
 {
 	this.Tag("usable by anyone");
 	this.Tag("turret");
+	this.Tag("heavy weight");
 
 	GunSettings settings = GunSettings();
 
-	settings.B_GRAV = Vec2f(0, 0.006); //Bullet Gravity
+	settings.B_GRAV = Vec2f(0, 0.0); //Bullet Gravity
 	settings.B_TTL = 20; //Bullet Time to live
 	settings.B_SPEED = 70; //Bullet speed
 	settings.B_DAMAGE = 1.5f; //Bullet damage
@@ -273,10 +274,22 @@ void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
 	}
 }
 
+u8 GetAmmo(CBlob@ this)
+{
+	if (this.getTeamNum() == 250) return 50;
+
+	CInventory@ inv = this.getInventory();
+	if (inv != null)
+	{
+		if (inv.getItem(0) != null) return inv.getItem(0).getQuantity();
+	}
+
+	return 0;
+}
+
 bool canBePickedUp(CBlob@ this, CBlob@ byBlob)
 {
-	return true;
-	// return this.getTeamNum() == byBlob.getTeamNum();
+	return byBlob.getTeamNum() == this.getTeamNum() && GetAmmo(this) == 0;
 }
 
 bool doesCollideWithBlob(CBlob@ this, CBlob@ blob)
@@ -301,7 +314,7 @@ bool isInventoryAccessible(CBlob@ this, CBlob@ forBlob)
 
 void onAttach(CBlob@ this, CBlob@ attached, AttachmentPoint @attachedPoint)
 {
-	if (attached.hasTag("bomber")) return;
+	if (attached.hasTag("bomber") || attached.hasTag("vehicle")) return;
 
 	if (attached.getPlayer() !is null && this.hasTag("invincible"))
 	{

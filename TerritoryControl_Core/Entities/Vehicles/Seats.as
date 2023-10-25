@@ -52,6 +52,14 @@ void onAttach(CBlob@ this, CBlob@ attached, AttachmentPoint @attachedPoint)
 		SetOccupied(attachedPoint, 1);
 		attached.Tag("seated");
 		Sound::Play("GetInVehicle.ogg", attached.getPosition());
+
+		if (this.getDamageOwnerPlayer() is null) 
+		{
+			if (attachedPoint.name.find("PASSENGER") == -1)
+			{
+				this.SetDamageOwnerPlayer(attached.getPlayer());
+			}
+		}
 	}
 }
 
@@ -61,9 +69,15 @@ void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint@ attachedPoint)
 	{
 		SetOccupied(attachedPoint, 0);
 		detached.Untag("seated");
+
 		if (!detached.getShape().isRotationsAllowed())
 		{
 			detached.setAngleDegrees(0.0f);
+		}
+
+		if (detached.getPlayer() is this.getDamageOwnerPlayer()) 
+		{
+			this.SetDamageOwnerPlayer(null);
 		}
 	}
 }

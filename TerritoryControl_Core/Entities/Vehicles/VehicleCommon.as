@@ -1,7 +1,5 @@
 #include "SeatsCommon.as"
 #include "VehicleAttachmentCommon.as"
-#include "Hitters.as"
-#include "HittersTC.as"
 
 // HOOKS THAT YOU MUST IMPLEMENT WHEN INCLUDING THIS FILE
 // void Vehicle_onFire( CBlob@ this, CBlob@ bullet, const u8 charge )
@@ -475,6 +473,7 @@ void Fire(CBlob@ this, VehicleInfo@ v, CBlob@ caller, const u8 charge)
 		{
 			// empty shot
 			this.getSprite().PlayRandomSound(v.empty_sound);
+			Vehicle_onFire(this, v, null, 0);
 		}
 
 		// finally set the delay
@@ -692,7 +691,7 @@ void Vehicle_StandardControls(CBlob@ this, VehicleInfo@ v)
 							//custom firing requirements
 						{
 							u8 charge = 0;
-							if (canFire(this, v) && ap.wasKeyPressed(key_action1))
+							if (Vehicle_canFire(this, v, ap.isKeyPressed(key_action1), ap.wasKeyPressed(key_action1), charge) && canFire(this, v))
 							{
 								CBitStream fireParams;
 								fireParams.write_u16(blob.getNetworkID());
@@ -926,30 +925,4 @@ bool isFlipped(CBlob@ this)
 {
 	f32 angle = this.getAngleDegrees();
 	return (angle > 80 && angle < 290);
-}
-
-f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitterBlob, u8 customData)
-{
-	f32 dmg = damage;
-	switch (customData)
-	{
-		case Hitters::sword:
-		case HittersTC::bayonet:
-		case Hitters::arrow:
-		case Hitters::stab:
-			dmg *= 0.25f;
-			break;
-			
-		case Hitters::keg:
-		case Hitters::bomb:
-		case Hitters::explosion:
-		case Hitters::bomb_arrow:
-			dmg *= 4.0f;
-			break;
-			
-		case Hitters::flying: // boat ram
-		dmg *= 0.5f;
-		break;
-	}
-	return dmg;
 }
