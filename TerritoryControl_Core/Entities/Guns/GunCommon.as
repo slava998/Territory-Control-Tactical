@@ -52,6 +52,7 @@ class GunSettings
 	/// this.set_string("CustomBullet", string fileName); //Changes the png file of the bullet
 	/// this.set_string("CustomFlash", string fileName); //Changes the png file of the muzzle flash
 	/// this.set_string("CustomCase", string fileName); //Changes the png file of the spent ammo cartridge particle
+	/// this.set_string("CustomMagazine", string fileName); //Changes the png file of the particle that appears on reloading
 	/// this.set_string("CustomSoundFlesh", string fileName); //Changes the sound file of the flesh hitting sound upon bullet collision
 	/// this.set_string("CustomSoundObject", string fileName); //Changes the sound file of the object hitting sound upon bullet collision
 	/// this.set_string("CustomSoundPickup", string fileName); //Adds a sound effect for when the gun is picked up
@@ -77,8 +78,9 @@ class GunSettings
 	/// this.Tag("CustomSoundLoop"); //Shooting sound becomes looped rather than instantaneous
 	/// this.Tag("CustomSemiAuto"); //Switches the gun to become semiautomatic rather than automatic
 	/// this.Tag("CustomSpread"); //Changes a shotgun's accuracy by by setting all bullets in a certain direction- kind of weird
+	/// this.Tag("CustomBoomstickCaseDrop"); //bullets are not ejected when firing and are instead ejected all at once when reloading
 	///
-	///	this.Tag("sniper"); //Bullets will deal double damage over certain distance
+	///	this.Tag("sniper"); //TODO: understand what it does 
 
 	/// PROJECTILE SETTINGS
 	/// > These are variables for guns that shoot actual blobs rather than bullets- e.g bazooka

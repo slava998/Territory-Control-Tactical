@@ -292,6 +292,21 @@ void onTick(CBlob@ this)
 				if (HasAmmo(this) && this.get_u8("clip") < settings.TOTAL) 
 				{
 					if (!this.hasTag("CustomShotgunReload")) sprite.PlaySound(settings.RELOAD_SOUND, 1.0f, reload_pitch);
+					
+					if (isClient()) 
+					{
+						if(this.exists("CustomMagazine")) 
+						{
+							ParticleMag(this.get_string("CustomMagazine"), this.getPosition()); //drop mag
+						}
+						else if (this.hasTag("CustomBoomstickCaseDrop"))
+						{						
+							for (int i = 0; i < settings.TOTAL; i++)
+							{
+								ParticleCase2(casing, this.getPosition(), this.isFacingLeft() ? oAngle : aimangle);
+							}
+						}
+					}
 				}
 			}
 			else if (this.get_bool("doReload")) // End of reload
@@ -404,11 +419,14 @@ void onTick(CBlob@ this)
 
 					if (isClient()) 
 					{
-						if (!this.exists("CustomCycle")) 
+						if (!this.hasTag("CustomBoomstickCaseDrop")) 
 						{
-							ParticleCase2(casing, this.getPosition(), this.isFacingLeft() ? oAngle : aimangle);
+							if (!this.exists("CustomCycle")) 
+							{
+								ParticleCase2(casing, this.getPosition(), this.isFacingLeft() ? oAngle : aimangle);
+							}
+							else this.set_bool("justShot", true);
 						}
-						else this.set_bool("justShot", true);
 					}
 				}
 				else if (this.get_u8("clickReload") == 1 && HasAmmo(this))

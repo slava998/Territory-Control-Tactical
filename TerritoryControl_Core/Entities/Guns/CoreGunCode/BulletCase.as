@@ -33,6 +33,29 @@ void ParticleCase2(const string particlePic, const Vec2f pos, const f32 angle)
 	}
 }
 
+void ParticleMag(const string particlePic, const Vec2f pos)
+{
+	if (particlePic.empty()) return; //do not proceed if there is no particle to use
+
+	Vec2f dimensions;
+	GUI::GetImageDimensions(particlePic, dimensions);
+
+	CParticle@ p = makeGibParticle(particlePic, pos, getRandomVelocity(90.0f, 2.5f, 50.0f), 0, 0, dimensions, 2.0f, 1, "");
+	if (p !is null)
+	{
+		p.fadeout = true;
+		p.rotation = Vec2f(20,20);
+		p.mass = 50;
+		p.bounce = 0.25;
+		p.freerotation = true;
+		p.fastcollision = true;
+#ifndef STAGING
+		p.lighting = true;
+		p.lighting_delay = 0;
+#endif
+	}
+}
+
 void ParticleBullet(Vec2f CurrentPos, Vec2f Velo)
 {
 	CParticle@ p = ParticlePixel(CurrentPos, getRandomVelocity(-Velo.Angle(), 3.0f, 40.0f), SColor(255, 244, 220, 66),true);

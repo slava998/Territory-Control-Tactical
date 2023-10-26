@@ -55,4 +55,5 @@ void onInit(CBlob@ this)
 	this.Tag("pistol");
 	this.set_string("CustomSoundPickup", "Revolver_Pickup.ogg");
 	this.Tag("CustomSemiAuto");
+	this.Tag("CustomBoomstickCaseDrop");
 }
