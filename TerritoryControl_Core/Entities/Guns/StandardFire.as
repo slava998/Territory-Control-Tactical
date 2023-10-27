@@ -295,11 +295,7 @@ void onTick(CBlob@ this)
 					
 					if (isClient()) 
 					{
-						if(this.exists("CustomMagazine")) 
-						{
-							ParticleMag(this.get_string("CustomMagazine"), this.getPosition()); //drop mag
-						}
-						else if (this.hasTag("CustomBoomstickCaseDrop"))
+						if (this.hasTag("CustomBoomstickCaseDrop")) //drop all the casings at the same time - like boomsitck or revolver
 						{						
 							for (int i = 0; i < settings.TOTAL; i++)
 							{

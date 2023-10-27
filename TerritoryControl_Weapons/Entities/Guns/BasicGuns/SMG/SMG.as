@@ -53,7 +53,6 @@ void onInit(CBlob@ this)
 	
 	//Custom
 	this.set_string("CustomSoundPickup", "SMG_Pickup.ogg");
-	this.set_string("CustomMagazine", "SMG_mag");
 }
 
 void onTick(CBlob@ this)

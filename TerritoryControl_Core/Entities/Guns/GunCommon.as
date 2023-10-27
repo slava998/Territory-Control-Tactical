@@ -52,7 +52,6 @@ class GunSettings
 	/// this.set_string("CustomBullet", string fileName); //Changes the png file of the bullet
 	/// this.set_string("CustomFlash", string fileName); //Changes the png file of the muzzle flash
 	/// this.set_string("CustomCase", string fileName); //Changes the png file of the spent ammo cartridge particle
-	/// this.set_string("CustomMagazine", string fileName); //Changes the png file of the particle that appears on reloading
 	/// this.set_string("CustomSoundFlesh", string fileName); //Changes the sound file of the flesh hitting sound upon bullet collision
 	/// this.set_string("CustomSoundObject", string fileName); //Changes the sound file of the object hitting sound upon bullet collision
 	/// this.set_string("CustomSoundPickup", string fileName); //Adds a sound effect for when the gun is picked up
