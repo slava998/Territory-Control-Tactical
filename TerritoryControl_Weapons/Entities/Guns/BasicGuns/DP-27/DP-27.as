@@ -51,4 +51,5 @@ void onInit(CBlob@ this)
 	this.set("gun_settings", @settings);
 	this.Tag("medium weight");
 	this.set_string("CustomSoundPickup", "DP27_Pickup.ogg");
+	this.set_string("CustomCase", "GatlingCase");
 }

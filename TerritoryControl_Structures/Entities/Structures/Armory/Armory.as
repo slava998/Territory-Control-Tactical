@@ -494,11 +494,3 @@ void onCreateInventoryMenu(CBlob@ this, CBlob@ forBlob, CGridMenu@ gridmenu)
 	params.write_u16(forBlob.getNetworkID());
 	CGridButton@ store = sv.AddButton("$str$", "Store ", this.getCommandID("sv_store"), Vec2f(1, 1), params);
 }
-
-void onRender(CSprite@ this)
-{
-	CBlob@ local = getLocalPlayerBlob();
-	CBlob@ b = this.getBlob();
-	GUI::SetFont("MENU");
-	GUI::DrawText("aasassaasas", b.getInterpolatedScreenPos() + Vec2f(16,-24), SColor(255,255,50,50).getInterpolated(SColor(255,50,255,50), 1));
-}
