@@ -35,11 +35,11 @@ void onInit(CBlob@ this)
 	settings.ENLARGE_FACTOR = 1; //Multiplier of how much cursor will enlarge as you shoot.
 
 	//Recoil
-	settings.G_RECOIL = -5; //0 is default, adds recoil aiming up
-	settings.G_RANDOMX = true; //Should we randomly move x
+	settings.G_RECOIL = -12; //0 is default, adds recoil aiming up
+	settings.G_RANDOMX = false; //Should we randomly move x
 	settings.G_RANDOMY = false; //Should we randomly move y, it ignores g_recoil
-	settings.G_RECOILT = 4; //How long should recoil last, 10 is default, 30 = 1 second (like ticks)
-	settings.G_BACK_T = 3; //Should we recoil the arm back time? (aim goes up, then back down with this, if > 0, how long should it last)
+	settings.G_RECOILT = 6; //How long should recoil last, 10 is default, 30 = 1 second (like ticks)
+	settings.G_BACK_T = 0; //Should we recoil the arm back time? (aim goes up, then back down with this, if > 0, how long should it last)
 
 	//Sound
 	settings.FIRE_SOUND = "RevolverFire.ogg"; //Sound when shooting
@@ -51,7 +51,6 @@ void onInit(CBlob@ this)
 	this.set("gun_settings", @settings);
 
 	//Custom
-	this.set_string("CustomReloadingEnding", "BigIron_LoadEnding");
 	this.Tag("pistol");
 	this.set_string("CustomSoundPickup", "Revolver_Pickup.ogg");
 	this.Tag("CustomSemiAuto");
