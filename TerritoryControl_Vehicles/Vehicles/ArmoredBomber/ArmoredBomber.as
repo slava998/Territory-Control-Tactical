@@ -1,5 +1,6 @@
 #include "VehicleCommon.as"
 #include "Hitters.as"
+#include "HittersTC.as"
 #include "Explosion.as";
 
 //most of the code is in BomberCommon.as
@@ -7,7 +8,7 @@
 void onInit(CBlob@ this)
 {
 	Vehicle_Setup(this,
-	              30.0f, // move speed
+	              44.0f, // move speed
 	              0.19f,  // turn speed
 	              Vec2f(0.0f, -5.0f), // jump out velocity
 	              true  // inventory access
@@ -163,14 +164,13 @@ f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitt
 		case Hitters::sword:
 		case Hitters::arrow:
 		case Hitters::stab:
+		case HittersTC::bayonet:
 			dmg *= 0.25f;
 			break;
 		case Hitters::bomb:
-			dmg *= 3.0f;
-			break;
 		case Hitters::keg:
 		case Hitters::explosion:
-			dmg *= 3.0f;
+			dmg *= 6.0f;
 			break;
 		case Hitters::bomb_arrow:
 			dmg *= 3.00f;
@@ -184,9 +184,13 @@ f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitt
 		case Hitters::flying:
 			dmg *= 0.5f;
 			break;
-		// case Hitters::bullet:
-			// dmg *= 0.4f;
-			// break;
+		case HittersTC::bullet_high_cal:
+		case HittersTC::bullet_low_cal:
+			dmg *= 0.1f;
+		break;	
+		case HittersTC::shotgun:
+			dmg *= 0.05f;
+		break;	
 	}
 	return dmg;
 }

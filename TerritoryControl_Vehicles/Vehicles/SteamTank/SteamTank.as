@@ -108,16 +108,26 @@ f32 getAimAngle(CBlob@ this, VehicleInfo@ v)
 
 void onAttach(CBlob@ this, CBlob@ attached, AttachmentPoint @attachedPoint)
 {
-	if (attached.hasTag("bomber")) return;
-
-	attached.Tag("invincible");
+	if (attached !is null)
+	{
+		if (attached.hasTag("flesh") || attached.hasTag("human") || attached.hasTag("hooman"))
+		{ 
+			if (isServer())
+			{	
+				attached.Tag("invincible");
+				attached.Tag("invincibilityByVehicle");
+			}
+		}
+	}
 }
 
 void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint@ attachedPoint)
 {
-	if (detached.hasTag("bomber")) return;
-
-	detached.Untag("invincible");
+	if (detached !is null)
+	{
+		detached.Untag("invincible");
+		detached.Untag("invincibilityByVehicle");
+	}
 }
 
 void onTick(CBlob@ this)
@@ -253,13 +263,10 @@ f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitt
 			dmg *= 0.25f;
 			break;
 
-		case Hitters::bomb:
-			dmg *= 4.0f;
-			break;
-
 		case Hitters::keg:
 		case Hitters::explosion:
-			dmg *= 4.0f;
+		case Hitters::bomb:
+			dmg *= 8.0f;
 			break;
 
 		case Hitters::bomb_arrow:

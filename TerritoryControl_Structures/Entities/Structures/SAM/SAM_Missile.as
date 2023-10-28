@@ -160,6 +160,7 @@ void onDie(CBlob@ this)
 
 void onCollision(CBlob@ this, CBlob@ blob, bool solid)
 {
+	if (blob !is null) this.setPosition(blob.getPosition());
 	if (solid && this.get_u32("no_explosion_timer") < getGameTime()) this.server_Die();
 }
 

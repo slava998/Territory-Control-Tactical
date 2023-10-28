@@ -84,7 +84,7 @@ void DoExplosion(CBlob@ this, Vec2f velocity)
 		Vec2f dir = Vec2f(1 - i / 2.0f, -1 + i / 2.0f);
 		Vec2f jitter = Vec2f((XORRandom(200) - 100) / 200.0f, (XORRandom(200) - 100) / 200.0f);
 
-		LinearExplosion(this, Vec2f(dir.x * jitter.x, dir.y * jitter.y), 16.0f + XORRandom(16), 10.0f, 4, 5.0f, Hitters::explosion);
+		LinearExplosion(this, Vec2f(dir.x * jitter.x, dir.y * jitter.y), 24.0f, 10.0f, 4, 5.0f, Hitters::explosion);
 	}
 
 	this.server_Die();
@@ -107,6 +107,7 @@ void onCollision(CBlob@ this, CBlob@ blob, bool solid)
 	{
 		if (this.getTickSinceCreated() > 10 && (solid ? true : (blob !is null && blob.isCollidable() && this.getTeamNum() != blob.getTeamNum())))
 		{
+			if (blob !is null) this.setPosition(blob.getPosition());
 			this.server_Die();
 		}
 	}

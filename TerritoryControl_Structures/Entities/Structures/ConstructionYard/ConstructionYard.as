@@ -24,13 +24,12 @@ void onInit(CBlob@ this)
 
 	AddIconToken("$icon_gatlinggun$", "Icon_Vehicles.png", Vec2f(24, 24), 2);
 	AddIconToken("$icon_mortar$", "Icon_Vehicles.png", Vec2f(24, 24), 3);
-	AddIconToken("$icon_incendiarymortar$", "IncendiaryMortar_Icon.png", Vec2f(24, 24), 0);
 	AddIconToken("$icon_howitzer$", "Icon_Vehicles.png", Vec2f(24, 24), 4);
-	AddIconToken("$icon_zeppelin$", "Zepplin.png", Vec2f(181, 90), 0);
-	AddIconToken("$icon_autocannon$", "AutocannonIcon.png", Vec2f(96, 48), 0);
-	AddIconToken("$icon_sfcannon$", "Icon_SFcannon.png", Vec2f(101, 32), 0);
-	AddIconToken("$icon_minethrower$", "Icon_Minethrower.png", Vec2f(18, 14), 0);
-	AddIconToken("$icon_biggeriron$", "Icon_BiggerIron.png", Vec2f(40, 14), 0);
+	//AddIconToken("$icon_zeppelin$", "Zepplin.png", Vec2f(181, 90), 0);
+	//AddIconToken("$icon_autocannon$", "AutocannonIcon.png", Vec2f(96, 48), 0);
+	//AddIconToken("$icon_sfcannon$", "Icon_SFcannon.png", Vec2f(101, 32), 0);
+	//AddIconToken("$icon_minethrower$", "Icon_Minethrower.png", Vec2f(18, 14), 0);
+	//AddIconToken("$icon_biggeriron$", "Icon_BiggerIron.png", Vec2f(40, 14), 0);
 	AddIconToken("$mat_ironingot$", "Material_IronIngot.png", Vec2f(16, 16), 1);;
 
 	// SHOP
@@ -133,17 +132,17 @@ void onInit(CBlob@ this)
 		s.buttonheight = 2;
 	}*/
 	{
-		ShopItem@ s = addShopItem(this, "Bomber", "$icon_bomber$", "bomber", "$icon_bomber$\n\n\n\n\n\n\n\n" + "A large aerial vehicle used for safe transport and bombing the peasants below.\n[Space] to drop items out of inventory.", false, true);
+		ShopItem@ s = addShopItem(this, "Bomber", "$icon_bomber$", "bomber", "$icon_bomber$\n\n\n\n\n\n\n\n" + "A large aerial vehicle used for safe transport and bombing the peasants below.\n[Space] to drop items out of inventory.\n\nHas a turret slot.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 250);
 		AddRequirement(s.requirements, "coin", "", "Coins", 500);
 
 		s.crate_icon = 13;
 		s.customButton = true;
-		s.buttonwidth = 3;
+		s.buttonwidth = 4;
 		s.buttonheight = 4;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Armored Bomber", "$icon_armoredbomber$", "armoredbomber", "$icon_armoredbomber$\n\n\n\n\n\n\n\n" + "A fortified but slow moving balloon with an iron basket and two attachment slots. Resistant against gunfire.\n[Space] to drop items out of inventory.", false, true);
+		ShopItem@ s = addShopItem(this, "Armored Bomber", "$icon_armoredbomber$", "armoredbomber", "$icon_armoredbomber$\n\n\n\n\n\n\n\n" + "A fortified but slow moving balloon with an iron basket and two attachment slots. Resistant against gunfire.\n[Space] to drop items out of inventory.\n\nHas two slots for turrets.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 450);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 20);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 16);
@@ -151,7 +150,7 @@ void onInit(CBlob@ this)
 
 		s.crate_icon = 13;
 		s.customButton = true;
-		s.buttonwidth = 3;
+		s.buttonwidth = 4;
 		s.buttonheight = 4;
 	}
 	{
@@ -209,11 +208,11 @@ void onInit(CBlob@ this)
 		s.buttonheight = 2;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Minicopter", "$icon_minicopter$", "minicopter", "$icon_minicopter$\n\n\n\n\n" + "A fast helicopter used for scouting and transport.\n\n[W]/[S] for vertical throttle, [A]/[D] for horizontal throttle.", false, true);
+		ShopItem@ s = addShopItem(this, "Minicopter", "$icon_minicopter$", "minicopter", "$icon_minicopter$\n\n\n\n\n" + "A fast helicopter used for scouting, transport and aerial support.\n\n[W]/[S] for vertical throttle, [A]/[D] for horizontal throttle.\n\nHas two slots for turrets.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 300);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 16);
 		AddRequirement(s.requirements, "blob", "mat_copperwire", "Copper Wire", 20);
-		AddRequirement(s.requirements, "coin", "", "Coins", 750);
+		AddRequirement(s.requirements, "coin", "", "Coins", 850);
 
 		s.crate_icon = 0;
 		s.customButton = true;
