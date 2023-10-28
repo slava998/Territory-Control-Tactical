@@ -127,7 +127,6 @@ void onInit(CBlob@ this)
 		ShopItem@ s = addShopItem(this, "Binoculars", "$icon_binoculars$", "binoculars", "Two telescopes glued together used for spying neighbours.");
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 2);
 		AddRequirement(s.requirements, "coin", "", "Coins", 150);
-		// AddRequirement(s.requirements, "tech", "tech_metallurgy", "Metallurgy", 1);
 
 		s.spawnNothing = true;
 	}
@@ -203,7 +202,7 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Dart Gun", "$icon_dartgun$", "dartgun", "Dart Gun that can be used to remotely deliver drugs.");
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 6);
 		AddRequirement(s.requirements, "blob", "mat_methane", "Methane", 50);
@@ -214,7 +213,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 1;
 
 		s.spawnNothing = true;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Bear Trap", "$icon_beartrap$", "beartrap", "An intricate device used for capturing of oversized badgers.");
 		AddRequirement(s.requirements, "blob", "mat_stone", "Stone", 100);
@@ -251,14 +250,14 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Suspicious Engineer's Tools", "$susengineertools$", "susengineertools", "Become a neutral spy engineer with 99% credibility.", true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 4);
 		AddRequirement(s.requirements, "blob", "amogusplushie", "Amogus Plushie", 1);
 		AddRequirement(s.requirements, "coin", "", "Coins", 1000);
 
 		s.spawnNothing = true;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Handheld Irradiator", "$icon_raygun$", "raygun", "A rather dangerous mithril-powered device used for cancer research.");
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 5);
@@ -312,7 +311,7 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "SpaceStar Ordering Transmitter", "$phone$", "phone", "A replica of SpaceStar Ordering Trasmitter capable of connecting to the UPF frequencies.\nAllows you to order supplies of UPF technologies and infantry support.");
 		AddRequirement(s.requirements, "blob", "bp_weapons", "Weapons Blueprint", 1);
 		AddRequirement(s.requirements, "blob", "bp_automation_advanced", "Advanced Automation Blueprint", 1);
@@ -328,7 +327,7 @@ void onInit(CBlob@ this)
 		AddRequirement(s.requirements, "blob", "mat_plasteel", "Plasteel Sheet", 125);
 		AddRequirement(s.requirements, "blob", "mat_mithrilingot", "Mithril Ingot", 12);
 		s.spawnNothing = true;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Gas Spreader XS-65", "$icon_gasweapon$", "gasthrower", "A device for spraying various gases.\nPut it on the ground and press E with gas in your hands to change the type of ammo.");
         AddRequirement(s.requirements, "blob", "gasextractor", "Zapthrottle Gas Extractor", 1);
