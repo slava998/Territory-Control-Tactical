@@ -122,7 +122,7 @@ void onInit(CBlob@ this)
 		s.buttonwidth = 2;
 		s.buttonheight = 2;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Minethrower", "$icon_minethrower$", "minethrower", "An unusual invention for littering the battlefield.\nUses Mines.\n\\n\May be only carried around when not holding anything.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 12);
 		AddRequirement(s.requirements, "coin", "", "Coins", 500);
@@ -131,7 +131,7 @@ void onInit(CBlob@ this)
 		s.customButton = true;
 		s.buttonwidth = 2;
 		s.buttonheight = 2;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Bomber", "$icon_bomber$", "bomber", "$icon_bomber$\n\n\n\n\n\n\n\n" + "A large aerial vehicle used for safe transport and bombing the peasants below.\n[Space] to drop items out of inventory.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 250);
@@ -176,7 +176,7 @@ void onInit(CBlob@ this)
 		s.buttonwidth = 2;
 		s.buttonheight = 2;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Bigger Iron", "$icon_biggeriron$", "biggeriron", "An upgraged version of howitzer capable of penetrating fortifications.\nYou can load batteries in it to make shells stun enemies.\nProjectiles of this weapon travel in a stright line.\n\nUses howitzer shells.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 26);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 30);
@@ -186,7 +186,7 @@ void onInit(CBlob@ this)
 		s.customButton = true;
 		s.buttonwidth = 2;
 		s.buttonheight = 2;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Spotter Airplane", "$icon_triplane$", "triplane", "$icon_triplane$\n\n\n\n" + "A fast airplane used for scouting and light bombing.\n\n[W]/[D] to accelerate\n[LMB] to shoot\n[Space] to drop items out of inventory\n[C] to leave", false, true);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 250);
@@ -220,7 +220,7 @@ void onInit(CBlob@ this)
 		s.buttonwidth = 4;
 		s.buttonheight = 2;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Jet Fighter", "$jetfighter$", "jetfighter", "$jetfighter$\n\n\n" + "An extremely fast airplane used for bombing.\n\n[W]/[D] to accelerate\n[LMB] to shoot\n[Space] to drop items out of inventory\n[C] to leave", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 32);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 20);
@@ -310,7 +310,7 @@ void onInit(CBlob@ this)
 		s.customButton = true;
 		s.buttonwidth = 8;
 		s.buttonheight = 3;
-	}
+	}*/
 }
 
 void onChangeTeam(CBlob@ this, const int oldTeam)
