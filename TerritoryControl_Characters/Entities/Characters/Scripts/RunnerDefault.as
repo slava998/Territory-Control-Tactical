@@ -31,8 +31,6 @@ void onInit(CBlob@ this)
 	this.maxChatBubbleLines = 4;
 
 	setKnockable(this);
-
-	this.set_u32("disable_gliding", 0);
 }
 
 void onTick(CBlob@ this)
@@ -55,25 +53,6 @@ void onTick(CBlob@ this)
 	if (this.isAttached() && isKnocked(this))
 	{
 		return;
-	}
-
-	if (getGameTime() <= this.get_u32("disable_gliding"))
-	{
-		this.setPosition(Vec2f(this.getPosition().x, this.getOldPosition().y));
-		this.setVelocity(Vec2f(this.getVelocity().x, 0));
-		if (this.getMap() !is null)
-		{
-			CBlob@[] find_glider;
-			this.getMap().getBlobsAtPosition(this.getPosition()+Vec2f(0,12), find_glider);
-			for (u16 i = 0; i < find_glider.length; i++)
-			{
-				if (find_glider[i] !is null && find_glider[i].getName() == "glider") //&& find_glider[i].get_u32("elec") > 3)
-				{
-					//printf("e");
-					this.set_u32("disable_gliding", getGameTime()+10);
-				}
-			}
-		}
 	}
 
 	if (isClient() && !this.isMyPlayer())
@@ -153,7 +132,7 @@ void onTick(CBlob@ this)
 			}
 		}
 		
-		const u8 team = this.getTeamNum();
+		/*const u8 team = this.getTeamNum();
 		if (team < 7)
 		{
 			TeamData@ team_data;
@@ -181,7 +160,7 @@ void onTick(CBlob@ this)
 					}
 				}
 			}
-		}
+		}*/
 	}
 
 	u8 deity_id = this.get_u8("deity_id");
