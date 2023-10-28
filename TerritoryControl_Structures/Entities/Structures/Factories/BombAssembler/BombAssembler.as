@@ -263,7 +263,7 @@ void onInit(CBlob@ this)
 		AddRequirement(i.reqs, "blob", "mat_sulphur", "Sulphur", 35);
 		items.push_back(i);
 	}
-	{
+	/*{
 		AssemblerItem i("mat_flashgrenade", 1, "Flash Grenade (1)");
 		AddRequirement(i.reqs, "blob", "mat_ironingot", "Iron Ingot", 2);
 		AddRequirement(i.reqs, "blob", "mat_sulphur", "Sulphur", 10);
@@ -287,7 +287,7 @@ void onInit(CBlob@ this)
 		AddRequirement(i.reqs, "blob", "mat_steelingot", "Steel Ingot", 4);
 		AddRequirement(i.reqs, "blob", "mat_sulphur", "Sulphur", 30);
 		items.push_back(i);
-	}
+	}*/
 	this.set("items", items);
 
 	this.set_TileType("background tile", CMap::tile_castle_back);

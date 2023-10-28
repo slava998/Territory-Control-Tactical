@@ -98,11 +98,11 @@ void onInit(CBlob@ this)
 			AddRequirement(s.requirements, "coin", "", "Coins", 500);
 			s.spawnNothing = true;
 		}
-		{
+		/*{
 			ShopItem@ s = addShopItem(this, "A fresh lemon Seed", "$seed$", "lemon_seed", "A sour fruit that can be used to make citric acid.\nAttempt to convert a lemon into a seed.", true);
 			AddRequirement(s.requirements, "coin", "", "Coins", 600);
 			s.spawnNothing = true;
-		}
+		}*/
 		{
 			ShopItem@ s = addShopItem(this, "Oak Tree", "$tree_bushy$", "bushy_seed", "Create an oak tree seed.", true);
 			AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 50);
