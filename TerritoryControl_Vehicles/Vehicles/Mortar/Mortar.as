@@ -108,7 +108,7 @@ void onTick(CBlob@ this)
 		if (arm !is null)
 		{
 			bool facing_left = sprite.isFacingLeft();
-			f32 rotation = angle * (facing_left ? -1 : 1);
+			f32 rotation = angle - this.getAngleDegrees()  * (facing_left ? -1 : 1);
 
 			arm.ResetTransform();
 			arm.SetFacingLeft(facing_left);
@@ -148,7 +148,7 @@ void Vehicle_onFire(CBlob@ this, VehicleInfo@ v, CBlob@ bullet, const u8 _unused
 		bullet.server_setTeamNum(this.getTeamNum());
 
 		u16 charge = v.charge;
-		f32 angle = this.getAngleDegrees() + Vehicle_getWeaponAngle(this, v);
+		f32 angle = Vehicle_getWeaponAngle(this, v);
 		angle = angle * (this.isFacingLeft() ? -1 : 1);
 		angle += ((XORRandom(200) - 100) / 100.0f);
 

@@ -155,7 +155,7 @@ void onTick(CBlob@ this)
 		CSprite@ sprite = this.getSprite();
 
 		bool facing_left = sprite.isFacingLeft();
-		f32 rotation = angle * (facing_left ? -1 : 1);
+		f32 rotation = angle - this.getAngleDegrees() * (facing_left ? -1 : 1);
 
 		CSpriteLayer@ arm = sprite.getSpriteLayer("arm");
 		if (arm !is null)
@@ -207,7 +207,7 @@ void Vehicle_onFire(CBlob@ this, VehicleInfo@ v, CBlob@ bullet, const u8 _unused
 	if (getGameTime() < this.get_u32("fireDelay")) return;
 
 	// Angle shittery
-	f32 angle = this.getAngleDegrees() + Vehicle_getWeaponAngle(this, v);
+	f32 angle = Vehicle_getWeaponAngle(this, v);
 	angle *= this.isFacingLeft() ? -1 : 1;
 	angle += ((XORRandom(400) - 150) / 100.0f);
 
