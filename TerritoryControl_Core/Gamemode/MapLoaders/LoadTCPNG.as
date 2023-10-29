@@ -483,7 +483,7 @@ class TCPNGLoader : PNGLoader
 			{
 				//CBlob@ blob = spawnBlob(map, "train", offset, 250);
 				map.SetTile(offset, CMap::tile_biron);
-				blob.setPosition(blob.getPosition() + Vec2f(0, -11));
+				//blob.setPosition(blob.getPosition() + Vec2f(0, -11));
 				break;
 			}
 			case tc_colors::color_rail:
