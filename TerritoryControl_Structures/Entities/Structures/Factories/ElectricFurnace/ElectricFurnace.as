@@ -11,6 +11,7 @@ const string[] matNames = {
 	"mat_copper",
 	"mat_iron",
 	"mat_gold",
+	"mat_titanium",
 	"mat_ironingot"
 };
 
@@ -19,6 +20,7 @@ const string[] matNamesResult = {
 	"mat_copperingot",
 	"mat_ironingot",
 	"mat_goldingot",
+	"mat_titaniumingot",
 	"mat_steelingot"
 };
 
@@ -27,10 +29,12 @@ const int[] matRatio = {
 	10,
 	10,
 	30,
+	20,
 	6
 };
 
 const int[] coalRatio = {
+	0,
 	0,
 	0,
 	0,
@@ -73,7 +77,7 @@ void onTick(CBlob@ this)
 	//printf("step "+this.get_u8("step")+" mp "+this.get_u8("multiplier"));
 	if (this.get_u8("step") == this.get_u8("multiplier")) //&& this.get_u32("elec") > 1000)
 	{
-		for (u8 i = 0; i < matNames.length; i++) // i < matNames.length
+		for (u8 i = 0; i < 6; i++) // i < matNames.length
 		{
 			if (this.hasBlob(matNames[i], matRatio[i]*this.get_u8("multiplier")) && (coalRatio[i] == 0 || this.hasBlob("mat_coal", coalRatio[i])))
 			{
@@ -82,22 +86,8 @@ void onTick(CBlob@ this)
 					CBlob @mat = server_CreateBlob(matNamesResult[i], -1, this.getPosition());
 					mat.server_SetQuantity(3*this.get_u8("multiplier"));
 					mat.Tag("justmade");
-					mat.Tag("from_forge");
 					this.TakeBlob(matNames[i], matRatio[i]*this.get_u8("multiplier"));
 					if (coalRatio[i] > 0) this.TakeBlob("mat_coal", coalRatio[i]*this.get_u8("multiplier"));
-
-					CMap@ map = this.getMap();
-					if (map !is null)
-					{
-						CBlob@ blob = map.getBlobAtPosition(this.getPosition() + Vec2f(0, 28.0f));
-						if (blob !is null && blob.getName() == "storage")
-						{
-							if (!blob.server_PutInInventory(mat))
-							{
-								mat.setPosition(blob.getPosition());
-							}
-						}
-					}
 				}
 				
 				//this.add_u32("elec", -(this.get_u16("energy_consumption")*this.get_u8("multiplier")));
@@ -164,7 +154,7 @@ void onCollision(CBlob@ this, CBlob@ blob, bool solid)
 		return;
 	}
 
-	for(int i = 0; i < matNames.length; i++)
+	for(int i = 0; i < 5; i += 1) // i < matNames.length!
 	if (!blob.isAttached() && blob.hasTag("material") && blob.getName() == matNames[i])
 	{
 		if (isServer()) this.server_PutInInventory(blob);
@@ -182,12 +172,12 @@ void onAddToInventory( CBlob@ this, CBlob@ blob )
 {
 	if(blob.getName() != "gyromat") return;
 
-	this.getCurrentScript().tickFrequency = 90 / (this.exists("gyromat_acceleration") ? this.get_f32("gyromat_acceleration") : 1);
+	this.getCurrentScript().tickFrequency = Maths::Max(1, 90 / (this.exists("gyromat_acceleration") ? this.get_f32("gyromat_acceleration") : 1));
 }
 
 void onRemoveFromInventory(CBlob@ this, CBlob@ blob)
 {
 	if(blob.getName() != "gyromat") return;
 
-	this.getCurrentScript().tickFrequency = 90 / (this.exists("gyromat_acceleration") ? this.get_f32("gyromat_acceleration") : 1);
+	this.getCurrentScript().tickFrequency = Maths::Max(1, 90 / (this.exists("gyromat_acceleration") ? this.get_f32("gyromat_acceleration") : 1));
 }

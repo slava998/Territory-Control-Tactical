@@ -266,7 +266,7 @@ f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitt
 		case Hitters::keg:
 		case Hitters::explosion:
 		case Hitters::bomb:
-			dmg *= 8.0f;
+			dmg *= 6.0f;
 			break;
 
 		case Hitters::bomb_arrow:

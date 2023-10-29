@@ -11,6 +11,7 @@ const string[] matNames = {
 	"mat_copper",
 	"mat_iron",
 	"mat_gold",
+	"mat_titanium",
 	"mat_ironingot"
 };
 
@@ -19,6 +20,7 @@ const string[] matNamesResult = {
 	"mat_copperingot",
 	"mat_ironingot",
 	"mat_goldingot",
+	"mat_titaniumingot",
 	"mat_steelingot"
 };
 
@@ -27,6 +29,7 @@ const int[] matRatio = {
 	10,
 	10,
 	25,
+	20,
 	6
 };
 
@@ -35,6 +38,7 @@ const int[] coalRatio = {
 	1,
 	1,
 	1,
+	2,
 	2
 };
 
@@ -148,7 +152,7 @@ void onCollision(CBlob@ this, CBlob@ blob, bool solid)
 		return;
 	}
 
-	for(int i = 0; i < matNames.length; i++) // i < matNames.length!
+	for(int i = 0; i < matNames.length; i += 1) // i < matNames.length!
 	if (!blob.isAttached() && blob.hasTag("material") && blob.getName() == matNames[i])
 	{
 		if (isServer()) this.server_PutInInventory(blob);
