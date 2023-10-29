@@ -112,21 +112,24 @@ void DoExplosion(CBlob@ this)
 			}
 		}
 
-		for (int i = 0; i < (7 + XORRandom(5)) * modifier; i++)
+		for (int i = 0; i < (3 + XORRandom(2)) * modifier; i++)
 		{
 			CBlob@ blob = server_CreateBlob("flame", -1, this.getPosition());
 			blob.setVelocity(Vec2f(XORRandom(10) - 5, -XORRandom(10)));
 			blob.server_SetTimeToDie(20 + XORRandom(10));
 		}
-		for(int a = 0; a < 80; a++)
+		for(int a = 0; a < 60; a++)
 		{
-			map.server_setFireWorldspace(pos + Vec2f(8 - XORRandom(16), 8 - XORRandom(16)) * 8, true);
+			CMap@ map = this.getMap();
+			Vec2f currentPos = pos + Vec2f(8 - XORRandom(16), 8 - XORRandom(16)) * 8;
+			Vec2f point;
+			if(!map.rayCastSolid(pos, currentPos, point)) map.server_setFireWorldspace(currentPos, true);
 		}
 	}
 
 	if (isClient() && this.isOnScreen())
 	{
-		for (int i = 0; i < 80; i++)
+		for (int i = 0; i < 60; i++)
 		{
 
 			MakeParticle(this, Vec2f( XORRandom(64) - 32, XORRandom(80) - 60), getRandomVelocity(angle, XORRandom(400) * 0.01f, 70), particles[XORRandom(particles.length)]);
