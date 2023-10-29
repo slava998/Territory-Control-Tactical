@@ -188,7 +188,7 @@ class TCPNGLoader : PNGLoader
 			case tc_colors::color_chickencoop:
 			{
 				autotile(offset);
-				spawnBlob(map, "chickencoop", offset, -1);
+				//spawnBlob(map, "chickencoop", offset, -1);
 				break;
 			}
 
@@ -196,7 +196,7 @@ class TCPNGLoader : PNGLoader
 			{
 				autotile(offset);
 
-				f32 rand = XORRandom(100);
+				/*f32 rand = XORRandom(100);
 				if (rand < 15)
 				{
 					CBlob@ blob = spawnBlob(map, "heavychicken", offset, -1);
@@ -211,7 +211,7 @@ class TCPNGLoader : PNGLoader
 				{
 					CBlob@ blob = spawnBlob(map, "scoutchicken", offset, -1);
 					blob.set_bool("raider", XORRandom(100) < 50);
-				}
+				}*/
 
 				break;
 			}
@@ -219,7 +219,7 @@ class TCPNGLoader : PNGLoader
 			case tc_colors::color_lootchest:
 			{
 				map.SetTile(offset, CMap::tile_biron);
-				spawnBlob(map, "lootchest", offset, -1);
+				//spawnBlob(map, "lootchest", offset, -1);
 				break;
 			}
 
@@ -228,7 +228,7 @@ class TCPNGLoader : PNGLoader
 				if (XORRandom(100) < 50)
 				{
 					map.SetTile(offset, CMap::tile_biron);
-					spawnBlob(map, "lootchest", offset, -1);
+					//spawnBlob(map, "lootchest", offset, -1);
 				}
 				break;
 			}
@@ -281,7 +281,7 @@ class TCPNGLoader : PNGLoader
 			case tc_colors::color_pirategull:
 			{
 				autotile(offset);
-				f32 rand = XORRandom(100);
+				/*f32 rand = XORRandom(100);
 				if (rand < 15)
 				{
 					spawnBlob(map, "heavypirategull", offset, 230);
@@ -291,7 +291,7 @@ class TCPNGLoader : PNGLoader
 					spawnBlob(map, "cowboygull", offset, 230);
 				}
 				else
-					spawnBlob(map, "pirategull", offset, 230);
+					spawnBlob(map, "pirategull", offset, 230);*/
 
 				break;
 			}
@@ -363,14 +363,14 @@ class TCPNGLoader : PNGLoader
 			}
 			case tc_colors::color_chickenmarket:
 			{
-				CBlob@ blob = spawnBlob(map, "chickenmarket", offset, 250);
-				blob.setPosition(blob.getPosition() + Vec2f(0, -16));
+				//CBlob@ blob = spawnBlob(map, "chickenmarket", offset, 250);
+				//blob.setPosition(blob.getPosition() + Vec2f(0, -16));
 				break;
 			}
 			case tc_colors::color_civillianchicken:
 			{
 				autotile(offset);
-				spawnBlob(map, "civillianchicken", offset, 250);
+				//spawnBlob(map, "civillianchicken", offset, 250);
 				break;
 			}
 			case tc_colors::color_barbedwire:
@@ -475,13 +475,13 @@ class TCPNGLoader : PNGLoader
 			}
 			case tc_colors::color_helichopper:
 			{
-				CBlob@ blob = spawnBlob(map, "tiger", offset, 250);
-				blob.setPosition(blob.getPosition() + Vec2f(0, 0));
+				//CBlob@ blob = spawnBlob(map, "tiger", offset, 250);
+				//blob.setPosition(blob.getPosition() + Vec2f(0, 0));
 				break;
 			}
 			case tc_colors::color_train:
 			{
-				CBlob@ blob = spawnBlob(map, "train", offset, 250);
+				//CBlob@ blob = spawnBlob(map, "train", offset, 250);
 				map.SetTile(offset, CMap::tile_biron);
 				blob.setPosition(blob.getPosition() + Vec2f(0, -11));
 				break;
