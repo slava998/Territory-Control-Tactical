@@ -411,12 +411,10 @@ void addTokens(CBlob@ this)
 	int teamnum = this.getTeamNum();
 	if (teamnum > 6) teamnum = 7;
 
-	AddIconToken("$icon_fireboom$", "FireBoom.png", Vec2f(32, 32), 0, teamnum);
 	AddIconToken("$icon_firejob$", "Firejob.png", Vec2f(16, 24), 0, teamnum);
 	AddIconToken("$icon_firework$", "Firework.png", Vec2f(16, 24), 0, teamnum);
 	AddIconToken("$icon_trader$", "TraderCoot.png", Vec2f(16, 16), 0, teamnum);
 	AddIconToken("$icon_sawrocket$", "Material_SawRocket.png", Vec2f(8, 24), 0, teamnum);
-	AddIconToken("$icon_illegalshit$", "IllegalGunPart.png", Vec2f(10, 6), 0, teamnum);
 	AddIconToken("$icon_crakgas$", "Material_Crak.png", Vec2f(16, 16), 0, teamnum);
 }
 
