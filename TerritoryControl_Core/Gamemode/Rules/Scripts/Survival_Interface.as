@@ -992,6 +992,32 @@ void onRender(CRules@ this)
 		Vec2f BPos1 = Vec2f(LeftDown + Vec2f(32, -80));
 		Vec2f BPos2 = Vec2f(LeftDown + Vec2f(150, -32));
 		bool hover = mousePos.x > BPos1.x && mousePos.x < BPos2.x && mousePos.y > BPos1.y && mousePos.y < BPos2.y;
+		
+		//Navigate using keys
+		if (controls.isKeyPressed(KEY_LSHIFT))
+		{
+			Sound::Play("option");
+			draw = false;
+		}
+		if (controls.isKeyPressed(KEY_KEY_X) && delay < time)
+		{
+			if(maxpage > page)
+			{
+				Sound::Play("option");
+				delay = getGameTime() + 2;
+				page++;
+			}
+		}
+		if (controls.isKeyPressed(KEY_KEY_Z) && delay < time)
+		{
+			if(page > 0)
+			{
+				Sound::Play("option");
+				delay = getGameTime() + 2;
+				page--;
+			}
+		}
+		
 		if (hover)
 		{
 			GUI::DrawButton(BPos1, BPos2);
@@ -1026,12 +1052,13 @@ void onRender(CRules@ this)
 			"For more information about server, press TAB and check the links.\n\n\n\n"+
 			"Made by Slava. Hope TC by NoahTheLegend, Xeno, Skemonde, and FrankStain. Original TC by TFlippy and co.\n\n"+
 			"Server Host + some sprites - Peaceful Gay.\n\n"+
-			"Help with code - Slait (Slait12).\n\n"+
+			"Some code - Slait (Slait12).\n\n"+
 			"Main testers - Klon (KlonSiderPlay), Dokooo (Don77860163), Peaceful Gay, Slait, MuseOfAbuse (Samuel2745).\n\n"+
-			"Server setup help - Vlad.";
+			"Server setup help - Vlad.\n\n\n"+
+			"If buttons do not work use lshift to close and Z, X to switch pages";
 			
 			
-			GUI::DrawTextCentered(text, center + Vec2f(3,140), white);
+			GUI::DrawText(text, TopLeft + Vec2f(25,300), white);
 			
 			//Help Button
 			BPos1 = Vec2f(LeftDown + Vec2f(168, -80));
@@ -1071,7 +1098,6 @@ void onRender(CRules@ this)
 					if (controls.isKeyJustPressed(KEY_LBUTTON) && delay < time)
 					{
 						Sound::Play("option");
-
 						delay = getGameTime() + 2;
 						page++;
 					}
@@ -1091,12 +1117,14 @@ void onRender(CRules@ this)
 			{
 				GUI::DrawButton(BPos1, BPos2);
 				
-				if (controls.isKeyJustPressed(KEY_LBUTTON) && delay < time)
+				if (page > 0)
 				{
-					Sound::Play("option");
-					
-					delay = getGameTime() + 2;
-					if (page > 0) page--;
+					if (controls.isKeyJustPressed(KEY_LBUTTON) && delay < time) 
+					{
+						Sound::Play("option");
+						delay = getGameTime() + 2;
+						page--;
+					}
 				}
 			}
 			else
