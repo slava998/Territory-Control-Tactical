@@ -108,7 +108,7 @@ void onTick(CBlob@ this)
 		if (arm !is null)
 		{
 			bool facing_left = sprite.isFacingLeft();
-			f32 rotation = angle - this.getAngleDegrees()  * (facing_left ? -1 : 1);
+			f32 rotation = angle * (facing_left ? -1 : 1) - this.getAngleDegrees();
 
 			arm.ResetTransform();
 			arm.SetFacingLeft(facing_left);

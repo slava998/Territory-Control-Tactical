@@ -155,7 +155,7 @@ void onTick(CBlob@ this)
 		CSprite@ sprite = this.getSprite();
 
 		bool facing_left = sprite.isFacingLeft();
-		f32 rotation = angle - this.getAngleDegrees() * (facing_left ? -1 : 1);
+		f32 rotation = angle * (facing_left ? -1 : 1) - this.getAngleDegrees();
 
 		CSpriteLayer@ arm = sprite.getSpriteLayer("arm");
 		if (arm !is null)
