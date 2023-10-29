@@ -78,12 +78,12 @@ void onInit(CBlob@ this)
 		AddRequirement(s.requirements, "coin", "", "Coins", 150);
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Alien box", "$icon_mysterybox$", "alienbox", "What's inside?\nOnly god knows!");
 		AddRequirement(s.requirements, "blob", "mat_wilmet", "Wilmet", 50);
 		AddRequirement(s.requirements, "coin", "", "Coins", 500);
 		s.spawnNothing = true;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Terdla's Bubble Gem", "$bubble_gem$", "bubblegem", "A useless pretty blue gem! May cause hiccups");
 		AddRequirement(s.requirements, "blob", "pumpkin", "Pumpkin", 1);
@@ -108,7 +108,7 @@ void onInit(CBlob@ this)
 		AddRequirement(s.requirements, "coin", "", "Coins", 30);
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "A chemical tip", "$paper$", "tip", "A paper with drug and chemical laboratories tips. Some recipes may need different laboratories.");
 		AddRequirement(s.requirements, "coin", "", "Coins", 200);
 		s.spawnNothing = true;
@@ -124,7 +124,7 @@ void onInit(CBlob@ this)
 		s.buttonwidth = 1;
 		s.buttonheight = 1;
 		s.spawnNothing = true;
-	}
+	}*/
 
 	CSprite@ sprite = this.getSprite();
 
