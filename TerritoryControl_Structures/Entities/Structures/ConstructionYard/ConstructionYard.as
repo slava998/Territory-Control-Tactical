@@ -101,7 +101,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 2;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Machine Gun", "$icon_gatlinggun$", "gatlinggun", "Useful for making holes.\n\\n\May be only carried around when not holding anything.", false, true);
+		ShopItem@ s = addShopItem(this, "Machine Gun", "$icon_gatlinggun$", "gatlinggun", "Useful for making holes.\n\nMay be only carried around when not holding anything.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 8);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 150);
 		AddRequirement(s.requirements, "coin", "", "Coins", 400);
@@ -112,7 +112,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 2;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Mortar", "$icon_mortar$", "mortar", "Mortar combat!\n\\n\May be only carried around when not holding anything.", false, true);
+		ShopItem@ s = addShopItem(this, "Mortar", "$icon_mortar$", "mortar", "Mortar combat!\n\nMay be only carried around when not holding anything.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 6);
 		AddRequirement(s.requirements, "coin", "", "Coins", 250);
 
@@ -154,7 +154,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 4;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Rocket Launcher", "$icon_rocketlauncher$", "rocketlauncher", "A rapid-fire rocket launcher especially useful against aerial targets and infantry.\n\\n\May be only carried around when not holding anything.", false, true);
+		ShopItem@ s = addShopItem(this, "Rocket Launcher", "$icon_rocketlauncher$", "rocketlauncher", "A rapid-fire rocket launcher especially useful against aerial targets and infantry.\n\nMay be only carried around when not holding anything.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 8);
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 375);
 		AddRequirement(s.requirements, "coin", "", "Coins", 350);

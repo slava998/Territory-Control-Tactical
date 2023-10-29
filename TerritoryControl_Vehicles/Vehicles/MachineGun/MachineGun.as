@@ -10,6 +10,7 @@ void onInit(CBlob@ this)
 	this.Tag("usable by anyone");
 	this.Tag("turret");
 	this.Tag("constant sound"); // loop sound
+	this.Tag("heavy weight");
 
 	GunSettings settings = GunSettings();
 
@@ -280,9 +281,22 @@ void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
 	}
 }
 
+u8 GetAmmo(CBlob@ this)
+{
+	if (this.getTeamNum() == 250) return 50;
+
+	CInventory@ inv = this.getInventory();
+	if (inv != null)
+	{
+		if (inv.getItem(0) != null) return inv.getItem(0).getQuantity();
+	}
+
+	return 0;
+}
+
 bool canBePickedUp(CBlob@ this, CBlob@ byBlob)
 {
-	return byBlob.hasTag("vehicle");
+	return byBlob.getTeamNum() == this.getTeamNum() && GetAmmo(this) == 0;
 }
 
 bool doesCollideWithBlob(CBlob@ this, CBlob@ blob)
