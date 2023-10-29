@@ -211,14 +211,14 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 		this.set_u32("shop_space", this.get_u32("shop_space") + 1);
 	}
-	if (rand.NextRanged(100) < 30)
+	/*if (rand.NextRanged(100) < 30)
 	{
 		ShopItem@ s = addShopItem(this, "same sheeeeeesht parody", "$macrogun$", "macrogun", "dumb toy shot mAh nosee offf");
 		AddRequirement(s.requirements, "coin", "", "Coins", 3500 + rand.NextRanged(3000));
 		s.buttonwidth = 2;
 		s.spawnNothing = true;
 		this.set_u32("shop_space", this.get_u32("shop_space") + 2);
-	}
+	}*/
 
 	if (rand.NextRanged(100) < 40)
 	{
@@ -278,20 +278,20 @@ void onInit(CBlob@ this)
 
 	if (rand.NextRanged(100) < 40)
 	{
-		if (rand.NextRanged(100) < 60)
+		//if (rand.NextRanged(100) < 60)
 		{
 				ShopItem@ s = addShopItem(this, "gun", "$revolver$", "revolver", "I hope you're not going to kill me with this for money?  I am poor");
 				AddRequirement(s.requirements, "coin", "", "Coins", 40  + rand.NextRanged(15));
 				s.spawnNothing = true;
 				this.set_u32("shop_space", this.get_u32("shop_space") + 1);
 		}
-		else
+		/*else
 		{
 				ShopItem@ s = addShopItem(this, "black gun", "$fuger$", "fuger", "this gun is saturated with radical ideas");
 				AddRequirement(s.requirements, "coin", "", "Coins", 200  + rand.NextRanged(100));
 				s.spawnNothing = true;
 				this.set_u32("shop_space", this.get_u32("shop_space") + 1);
-		}
+		}*/
 		{
 			ShopItem@ s = addShopItem(this, "amo (20)", "$icon_pistolammo$", "mat_pistolammo-20", "great for my pistals");
 			AddRequirement(s.requirements, "coin", "", "Coins", 30);
