@@ -132,7 +132,7 @@ void onTick(CBlob@ this)
 			}
 		}
 		
-		/*const u8 team = this.getTeamNum();
+		const u8 team = this.getTeamNum();
 		if (team < 7)
 		{
 			TeamData@ team_data;
@@ -160,7 +160,7 @@ void onTick(CBlob@ this)
 					}
 				}
 			}
-		}*/
+		}
 	}
 
 	u8 deity_id = this.get_u8("deity_id");
