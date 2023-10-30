@@ -423,21 +423,25 @@ f32 constrainAngle(f32 x)
 
 void onAttach(CBlob@ this, CBlob@ attached, AttachmentPoint @attachedPoint)
 {
+	if (attachedPoint.socket)
+	{
+		this.Tag("no barrier pass");
+	}
 	if (attached !is null)
 	{
-		if (attached.hasTag("flesh") || attached.hasTag("human") || attached.hasTag("hooman"))
-		{ 
-			if (isServer())
-			{	
-				attached.Tag("invincible");
-				attached.Tag("invincibilityByVehicle");
-			}
-		}
+		attached.Tag("invincible");
+		attached.Tag("invincibilityByVehicle");
 	}
 }
 
-void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint@ attachedPoint)
+void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint @attachedPoint)
 {
+	if (attachedPoint.socket)
+	{
+		detached.setVelocity(this.getVelocity());
+		detached.AddForce(Vec2f(0.0f, -300.0f));
+		this.Untag("no barrier pass");
+	}
 	if (detached !is null)
 	{
 		detached.Untag("invincible");

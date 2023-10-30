@@ -110,13 +110,9 @@ void onAttach(CBlob@ this, CBlob@ attached, AttachmentPoint @attachedPoint)
 {
 	if (attached !is null)
 	{
-		if (attached.hasTag("flesh") || attached.hasTag("human") || attached.hasTag("hooman"))
+		if (attached.hasTag("flesh") || attached.hasTag("human") || attached.hasTag("hooman")|| attached.hasTag("turret"))
 		{ 
-			if (isServer())
-			{	
-				attached.Tag("invincible");
-				attached.Tag("invincibilityByVehicle");
-			}
+			attached.Tag("invincible");
 		}
 	}
 }
@@ -126,7 +122,6 @@ void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint@ attachedPoint)
 	if (detached !is null)
 	{
 		detached.Untag("invincible");
-		detached.Untag("invincibilityByVehicle");
 	}
 }
 
