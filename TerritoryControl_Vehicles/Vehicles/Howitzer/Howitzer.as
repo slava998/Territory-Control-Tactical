@@ -227,7 +227,25 @@ bool isInventoryAccessible(CBlob@ this, CBlob@ forBlob)
 	return forBlob.getCarriedBlob() is null && (inv !is null ? inv.getItem(v.ammo_name) is null : true);
 }
 
+void onAttach(CBlob@ this, CBlob@ attached, AttachmentPoint @attachedPoint)
+{
+	if (attached.hasTag("bomber") || attached.hasTag("vehicle")) return;
+
+	if (attached.getPlayer() !is null && this.hasTag("invincible"))
+	{
+		if (this.isAttached())
+		{
+			attached.Tag("invincible");
+			attached.Tag("invincibilityByVehicle");
+		}
+	}
+}
+
 void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint@ attachedPoint)
 {
-
+	if (detached.hasTag("invincibilityByVehicle"))
+	{
+		detached.Untag("invincible");
+		detached.Untag("invincibilityByVehicle");
+	}
 }
