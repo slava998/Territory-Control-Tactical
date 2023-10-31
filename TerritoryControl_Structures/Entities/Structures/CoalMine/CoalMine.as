@@ -48,9 +48,9 @@ void onInit(CBlob@ this)
 	this.Tag("can be captured by neutral");
 	this.Tag("no_die");
 
-	this.Tag("upkeep building");
-	this.set_u8("upkeep cap increase", 2);
-	this.set_u8("upkeep cost", 0);
+	//this.Tag("upkeep building");
+	//this.set_u8("upkeep cap increase", 2);
+	//this.set_u8("upkeep cost", 0);
 
 	if (isServer())
 	{
