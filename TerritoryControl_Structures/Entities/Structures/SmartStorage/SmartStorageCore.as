@@ -23,6 +23,9 @@ void onInit(CBlob@ this)
 	string[] GitemsArray;
 	this.set("GitemsArray",@GitemsArray);
 	
+	this.addCommandID("store inventory");
+	AddIconToken("$str$", "StoreAll.png", Vec2f(16, 16), 0);
+	
 	
 }
 
@@ -173,6 +176,43 @@ void onCommand(CBlob@ this, u8 cmd, CBitStream@ params)
 			}
 		}
 	}*/
+	else if (cmd == this.getCommandID("store inventory"))
+	{
+		CBlob@ caller = getBlobByNetworkID(params.read_u16());
+		if (caller !is null && isServer())
+		{
+			CInventory @inv = caller.getInventory();
+			if (caller.getName() == "builder")
+			{
+				CBlob@ carried = caller.getCarriedBlob();
+				if (carried !is null)
+				{
+					// TODO: find a better way to check and clear blocks + blob blocks || fix the fundamental problem, blob blocks not double checking requirement prior to placement.
+					if (carried.hasTag("temp blob"))
+					{
+						carried.server_Die();
+					}
+				}
+			}
+			
+			if (inv !is null)
+			{
+				while (inv.getItemsCount() > 0)
+				{
+					CBlob@ item = inv.getItem(0);
+					if (canPickup(this, item))
+					{
+						smartStorageAdd(this, item);
+					}
+					else if (!this.server_PutInInventory(item))
+					{
+						caller.server_PutInInventory(item);
+						break;
+					}
+				}
+			}
+		}
+	}
 }
 
 void smartStorageAdd(CBlob@ this, CBlob@ blob)
@@ -248,6 +288,18 @@ void onCreateInventoryMenu(CBlob@ this, CBlob@ forBlob, CGridMenu @gridmenu)
 	//print("SS onCreateInventoryMenu");
 	if (forBlob !is null)
 	{
+		//Store all button
+		if (forBlob.getControls() !is null)
+		{
+			Vec2f mscpos = forBlob.getControls().getMouseScreenPos(); 
+			Vec2f MENU_POS = mscpos+Vec2f(-160,-72);
+			CGridMenu@ sv = CreateGridMenu(MENU_POS, this, Vec2f(1, 1), "Store ");
+			
+			CBitStream params;
+			params.write_u16(forBlob.getNetworkID());
+			CGridButton@ store = sv.AddButton("$str$", "Store ", this.getCommandID("store inventory"), Vec2f(1, 1), params);
+		}
+	
 		//string[]@ tokens = text_in.split(" ");
 		//u8 listLength = factionStorageMats.length;
 		//string[] @GitemsArray;
