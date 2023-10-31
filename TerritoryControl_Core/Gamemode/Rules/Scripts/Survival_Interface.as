@@ -941,13 +941,6 @@ string getRank(string &in username, SColor &out col, CPlayer@ p)
 			return "Moderator";
 		}
 		break;
-		
-		case 147149239: // plmoknijbuhvygcmarmo (Peaceful gay)
-		{
-			col = SColor(255, 255, 00, 255);
-			return "♂Gay♂";
-		}
-		break;
 
 		//Some patreon thing for the future maybe
 
