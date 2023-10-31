@@ -194,7 +194,7 @@ void onTick(CRules@ this)
 					u8 team = p.getTeamNum();
 					if (team >= maxTeams) continue;
 					
-					team_list[team].upkeep += team_list[team].player_count-(team_list[team].player_count > 1 ? 1 : 0); //+ (team_list[team].player_count * 5);
+					team_list[team].upkeep += 1; //+ (team_list[team].player_count * 5);
 					team_list[team].player_count++;
 					team_list[team].wealth += p.getCoins();
 				}
@@ -210,7 +210,7 @@ void onTick(CRules@ this)
 					
 					if (team > maxTeams) continue;
 										
-					team_list[team].upkeep += 1;
+					team_list[team].upkeep += blob.get_u8("upkeep cost");
 					team_list[team].upkeep_cap += blob.get_u8("upkeep cap increase");
 				}
 			}
