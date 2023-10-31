@@ -187,11 +187,14 @@ void Blend(CBlob@ this, CBlob@ blob)
 			{
 				u32 quantity = blob.getQuantity();
 
+				f32 goldq = (0.035f + XORRandom(20.0)/1000.0);
+
 				MakeMat(this, this.getPosition(), "mat_stone", 		quantity * 0.50f + XORRandom(quantity * 0.25f));
 				MakeMat(this, this.getPosition(), "mat_concrete", 	quantity * 0.08f + XORRandom(quantity * 0.08f)); //grinder produces concrete again!
-				MakeMat(this, this.getPosition(), "mat_iron", 		XORRandom(quantity * 0.2f));
+				MakeMat(this, this.getPosition(), "mat_iron", 		XORRandom(quantity * 0.09f));
 				MakeMat(this, this.getPosition(), "mat_copper", 	XORRandom(quantity * 0.0325f));
-				MakeMat(this, this.getPosition(), "mat_gold",	 	XORRandom(quantity * 0.025)); // 0.02 - 0.04
+				MakeMat(this, this.getPosition(), "mat_gold",	 	XORRandom(quantity * 0.025));
+				MakeMat(this, this.getPosition(), "mat_titanium",	XORRandom(quantity * 0.04)); 
 				MakeMat(this, this.getPosition(), "mat_mithril", 	XORRandom(quantity * 0.035f));
 			}
 
