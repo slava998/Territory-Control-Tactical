@@ -584,9 +584,6 @@ void updateDestroyedFactions()
 
 void onInit(CRules@ this)
 {
-	// Todo: Maybe let's not make it so obvious ;)
-	CSecurity@ sec = getSecurity();
-	sec.unBan("TFlippy");
 
 	// Print out a message to anybody running TC server/localhost
 	if (isServer() && !isClient())
