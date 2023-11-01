@@ -183,6 +183,8 @@ void onTick(CRules@ this)
 				team.player_count = 0;
 				team.wealth = 0;
 				team.controlled_count = 0;
+				team.team_mines = 0;
+				team.team_drills = 0;
 			}
 				
 			for (u32 i = 0; i < getPlayersCount(); i++)
@@ -212,6 +214,34 @@ void onTick(CRules@ this)
 										
 					team_list[team].upkeep += blob.get_u8("upkeep cost");
 					team_list[team].upkeep_cap += blob.get_u8("upkeep cap increase");
+				}
+			}
+			
+			CBlob@[] mines;
+			if (getBlobsByName("coalmine", @mines))
+			{
+				for (u32 i = 0; i < mines.length; i++)
+				{
+					CBlob@ blob = mines[i];
+					u8 team = blob.getTeamNum();
+					
+					if (team > maxTeams) continue;
+										
+					team_list[team].team_mines++;
+				}
+			}
+			
+			CBlob@[] drills;
+			if (getBlobsByName("drillrig", @drills))
+			{
+				for (u32 i = 0; i < drills.length; i++)
+				{
+					CBlob@ blob = drills[i];
+					u8 team = blob.getTeamNum();
+					
+					if (team > maxTeams) continue;
+					
+					if(blob.hasTag("digging_bedrock")) team_list[team].team_drills++;
 				}
 			}
 				

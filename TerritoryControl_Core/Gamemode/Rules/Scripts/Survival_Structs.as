@@ -51,6 +51,8 @@ shared class TeamData
 	u16 upkeep_cap;
 	u32 wealth;
 	u16 controlled_count;
+	u16 team_mines;
+	u16 team_drills;
 
 	string leader_name;
 	string team_name;
@@ -73,6 +75,8 @@ shared class TeamData
 		upkeep_cap = 10;
 		wealth = 0;
 		controlled_count = 0;
+		team_mines = 0;
+		team_drills = 0;
 
 		leader_name = "";
 		team_name = "";

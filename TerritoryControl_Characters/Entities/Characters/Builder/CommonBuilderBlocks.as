@@ -630,7 +630,7 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.buildOnGround = true;
 		b.size.Set(56, 24);
 		blocks[2].push_back(b);
-	}
+	}*/
 	{
 		BuildBlock b(0, "drillrig", "$icon_drillrig$", "Driller Mole:\n\nAn automatic drilling machine that mines resources underneath.");
 		AddRequirement(b.reqs, "blob", "drill", "Drill", 1);
@@ -640,7 +640,7 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.size.Set(24, 24);
 		blocks[2].push_back(b);
 	}
-	{
+	/*{
 		BuildBlock b(0, "chemlab", "$icon_chemlab$", "Chemical Production Machine:\n\nA machine capable of manufacturing basic drugs and chemicals.");
 		AddRequirement(b.reqs, "blob", "mat_steelingot", "Steel Ingot", 20);
 		AddRequirement(b.reqs, "blob", "mat_ironingot", "Iron Ingot", 10);

@@ -2,6 +2,7 @@
 #include "Requirements.as";
 #include "MakeMat.as";
 #include "BuilderHittable.as";
+#include "Survival_Structs.as";
 const u8 inventory_size = 2 * 3;
 
 void onInit(CBlob@ this)
@@ -13,7 +14,82 @@ void onInit(CBlob@ this)
 	this.Tag("builder always hit");
 	this.Tag("extractable");
 	this.Tag("change team on fort capture");
+	
+	this.getCurrentScript().tickFrequency = 30*5;
 }
+
+
+////////////////////////////////////////////////////////
+//Coal mine and drillrig production code is duplicated here 
+//This is necessary so that if a faction builds a factory, one building will tick instead of several buildings.
+
+const string[] resources = 
+{
+	"mat_coal",
+	"mat_iron",
+	"mat_copper",
+	"mat_stone",
+	"mat_gold",
+	"mat_sulphur",
+	"mat_dirt"
+};
+
+const u8[] resourceYields = 
+{
+	10, //coal
+	27,	//iron
+	8,  //copper
+	45, //stone
+	20, //gold
+	10, //sulphur
+	16 //dirt
+};
+
+const string[] drillResources = 
+{
+	"mat_iron",
+	"mat_copper",
+	"mat_stone",
+	"mat_gold",
+	"mat_mithril"
+};
+
+const u8[] drillResourceYields = 
+{
+	18,
+	18,
+	36,
+	18,
+	9
+};
+
+void onTick(CBlob@ this)
+{
+	if (isServer())
+	{	
+		if(this.getTeamNum() > 6) return;
+		
+		TeamData@ team_data;
+		GetTeamData(this.getTeamNum(), @team_data);
+		if(team_data.team_mines > 0)
+		{
+			u8 index = XORRandom(resources.length);
+			u32 amount = Maths::Max(1, Maths::Floor(XORRandom(resourceYields[index]))) * team_data.team_mines;
+			//print(mod +  " " +amount);
+			
+			MakeMat(this, this.getPosition(), resources[index], amount);
+		}
+		
+		if(team_data.team_drills > 0)
+		{
+			u8 drillIndex = XORRandom(drillResources.length - 1);
+			u32 drillAmount = Maths::Max(1, Maths::Floor(XORRandom(drillResourceYields[drillIndex] * (f32(XORRandom(100)) / 40.00f))) * 1.67) * team_data.team_drills; // * 1.67 to make drill and coalmine tick frequency equal
+			
+			MakeMat(this, this.getPosition(), drillResources[drillIndex], drillAmount);
+		}
+	}
+}
+////////////////////////////////////////////////////////
 
 void onAddToInventory(CBlob@ this, CBlob@ blob)
 {

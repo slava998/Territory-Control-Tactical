@@ -7,6 +7,10 @@
 #include "CTFShopCommon.as";
 #include "MakeMat.as";
 
+//Coal mine's production code is also duplicated is StonePile.as
+//This is necessary so that if a faction builds a factory, one building will tick instead of several mines.
+
+
 const string[] resources = 
 {
 	"mat_coal",
@@ -51,13 +55,7 @@ void onInit(CBlob@ this)
 	//this.Tag("upkeep building");
 	//this.set_u8("upkeep cap increase", 2);
 	//this.set_u8("upkeep cost", 0);
-
-	if (isServer())
-	{
-		//0 - basic, 1 - iron, 2 - copper, 3 - gold, 4 - coal, 5 - mithril, 6 - dirt, 7 - sulphur 
-		this.set_u8("type", XORRandom(9));
-	}
-
+	
 	this.addCommandID("write");
 	//this.set_Vec2f("nobuild extend", Vec2f(0.0f, 8.0f));
 	this.set_Vec2f("travel button pos", Vec2f(3.5f, 4));
@@ -178,134 +176,23 @@ void onInit(CBlob@ this)
 	}
 }
 
-/*void onTick(CBlob@ this)
-{
-	if (isServer())
-	{
-		u8 index = XORRandom(resources.length - 1);
-		MakeMat(this, this.getPosition(), resources[index], XORRandom(resourceYields[index]));
-	}
-}*/
-
 void onTick(CBlob@ this)
 {
-	if (isClient() && this !is null && this.getTickSinceCreated() >= 5 && this.getTickSinceCreated() <= 250)
-	{
-		this.Sync("type", true);
-		switch (this.get_u8("type"))
-		{
-			case 0:
-			{
-				this.setInventoryName("Exhausted mine");
-				break;
-			}
-			case 1:
-			{
-				this.setInventoryName("Rich on iron mine");
-				break;
-			}
-			case 2:
-			{
-				this.setInventoryName("Rich on copper mine");
-				break;
-			}
-			case 3:
-			{
-				this.setInventoryName("Rich on gold mine");
-				break;
-			}
-			case 4:
-			{
-				this.setInventoryName("Rich on coal mine");
-				break;
-			}
-			case 5:
-			{
-				this.setInventoryName("Rich on mithril mine");
-				break;
-			}
-			case 6:
-			{
-				this.setInventoryName("Rich on dirt mine");
-				break;
-			}
-			case 7:
-			{
-				this.setInventoryName("Rich on sulphur mine");
-				break;
-			}
-		}
-	}
 	if (isServer())
 	{
-		// if (this.getInventory().isFull()) return;
-
-		// u8 index = XORRandom(resources.length - 1);
-		// MakeMat(this, this.getPosition(), resources[index], XORRandom(resourceYields[index]));
-
 		CBlob@ storage = FindStorage(this.getTeamNum());
+		
+		if (storage !is null) return; //Moved production with stone pile code to StonePile.as
 		
 		u8 index = XORRandom(resources.length);
 		u32 amount = Maths::Max(1, Maths::Floor(XORRandom(resourceYields[index])));
 		//print(mod +  " " +amount);
-
-		switch (this.get_u8("type"))
-		{
-			case 0:
-			{
-				amount = Maths::Floor(amount*0.5);
-				break;
-			}
-			case 1:
-			{
-				if (resources[index] == "mat_iron")
-					amount *= 2;
-				break;
-			}
-			case 2:
-			{
-				if (resources[index] == "mat_copper")
-					amount *= 2;
-				break;
-			}
-			case 3:
-			{
-				if (resources[index] == "mat_gold")
-					amount *= 3;
-				break;
-			}
-			case 4:
-			{
-				if (resources[index] == "mat_coal")
-					amount *= 4;
-				break;
-			}
-			case 5:
-			{
-				u32 amoamount = Maths::Max(1, Maths::Floor(XORRandom(3)));
-				if (storage !is null) MakeMat(storage, this.getPosition(), "mat_mithril", amoamount);
-				else if (!this.getInventory().isFull()) MakeMat(this, this.getPosition(), "mat_mithril", amoamount);
-				break;
-			}
-			case 6:
-			{
-				if (resources[index] == "mat_dirt")
-					amount *= 2;
-				break;
-			}
-			case 7:
-			{
-				if (resources[index] == "mat_sulphur")
-					amount *= 4;
-				break;
-			}
-		}
 		
-		if (storage !is null)
-		{
-			MakeMat(storage, this.getPosition(), resources[index], amount);
-		}
-		else if (!this.getInventory().isFull())
+		//if (storage !is null)
+		//{
+			//MakeMat(storage, this.getPosition(), resources[index], amount);
+		//}
+		if (!this.getInventory().isFull())
 		{
 			MakeMat(this, this.getPosition(), resources[index], amount);
 		}
