@@ -113,7 +113,7 @@ class KillFeed
 				case Hitters::builder:      hitterIcon = "$killfeed_builder$"; break;
 				case Hitters::spikes:       hitterIcon = "$killfeed_spikes$"; break;
 				case Hitters::sword:        hitterIcon = "$killfeed_sword$"; break;
-				case HittersTC::bayonet:
+				case HittersTC::bayonet:	hitterIcon = "$killfeed_sword$"; break;
 				case Hitters::shield:       hitterIcon = "$killfeed_shield$"; break;
 				case Hitters::keg:          hitterIcon = "$killfeed_keg$"; break;
 				case Hitters::arrow:        hitterIcon = "$killfeed_arrow$"; break;
