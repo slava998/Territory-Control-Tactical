@@ -237,6 +237,12 @@ void onInit(CBlob@ this)
 		AddRequirement(i.reqs, "blob", "mat_sulphur", "Sulphur", 25);
 		items.push_back(i);
 	}
+	{
+		AssemblerItem i("foodcan", 2, "Scrub's Chow (2)");
+		AddRequirement(i.reqs, "blob", "mat_meat", "Mystery Meat", 15);
+		AddRequirement(i.reqs, "blob", "mat_ironingot", "Iron Ingot", 1);
+		items.push_back(i);
+	}	
 	this.set("items", items);
 
 	this.set_TileType("background tile", CMap::tile_castle_back);
