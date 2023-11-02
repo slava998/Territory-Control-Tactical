@@ -439,8 +439,8 @@ void onTick(CBlob@ this)
 				}
 			}
 
-			if (actionInterval != 0 || this.get_u8("actionInterval") != 0) this.set_u8("actionInterval", actionInterval);
 			if (Burst != 0 || this.get_u16("Burst") != 0) this.set_u16("Burst", Burst);
+			if (actionInterval != 0 || this.get_u8("actionInterval") != 0) this.set_u8("actionInterval", actionInterval);
 			
 			
 			//if (getGameTime()%15==0)printf(""+this.get_u8("actionInterval"));
