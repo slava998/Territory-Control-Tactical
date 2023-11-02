@@ -28,7 +28,7 @@ const u8[] resourceYields =
 	27,	//iron
 	8,  //copper
 	45, //stone
-	20, //gold
+	24, //gold
 	10, //sulphur
 	16 //dirt
 };
