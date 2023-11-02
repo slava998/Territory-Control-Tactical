@@ -69,12 +69,14 @@ void onTick(CBlob@ this)
 	{	
 		if(this.getTeamNum() > 6) return;
 		
+		u8 storages = findStorage(this.getTeamNum());
+		
 		TeamData@ team_data;
 		GetTeamData(this.getTeamNum(), @team_data);
 		if(team_data.team_mines > 0)
 		{
 			u8 index = XORRandom(resources.length);
-			u32 amount = Maths::Max(1, Maths::Floor(XORRandom(resourceYields[index]))) * team_data.team_mines;
+			u32 amount = Maths::Max(1, Maths::Floor(XORRandom(resourceYields[index]) / storages)) * team_data.team_mines;
 			//print(mod +  " " +amount);
 			
 			MakeMat(this, this.getPosition(), resources[index], amount);
@@ -83,13 +85,33 @@ void onTick(CBlob@ this)
 		if(team_data.team_drills > 0)
 		{
 			u8 drillIndex = XORRandom(drillResources.length - 1);
-			u32 drillAmount = Maths::Max(1, Maths::Floor(XORRandom(drillResourceYields[drillIndex] * (f32(XORRandom(100)) / 40.00f))) * 1.67) * team_data.team_drills; // * 1.67 to make drill and coalmine tick frequency equal
+			u32 drillAmount = Maths::Max(1, Maths::Floor(XORRandom(drillResourceYields[drillIndex] * (f32(XORRandom(100)) / 40.00f)) / storages) * 1.67) * team_data.team_drills; // * 1.67 to make drill and coalmine tick frequency equal
 			
 			MakeMat(this, this.getPosition(), drillResources[drillIndex], drillAmount);
 		}
 	}
 }
 ////////////////////////////////////////////////////////
+
+u8 findStorage(u8 team)
+{
+	if (team >= 100) return 0;
+
+	CBlob@[] blobs;
+	getBlobsByName("stonepile", @blobs);
+
+	CBlob@[] validBlobs;
+
+	for (u32 i = 0; i < blobs.length; i++)
+	{
+		if (blobs[i].getTeamNum() == team && !blobs[i].getInventory().isFull())
+		{
+			validBlobs.push_back(blobs[i]);
+		}
+	}
+
+	return validBlobs.length;
+}
 
 void onAddToInventory(CBlob@ this, CBlob@ blob)
 {
