@@ -182,10 +182,13 @@ void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
 	else if (isServer() && cmd == this.getCommandID("sync_interval"))
 	{
 		u8 time;
+		u8 Burst;
 		if (!params.saferead_u8(time)) return;
 		this.set_u8("actionInterval", time);
+		this.set_u8("Burst", Burst);
 		//printf("TIME --- "+time);
 		this.Sync("actionInterval", true);
+		this.Sync("Burst", true);
 	}
 }
 

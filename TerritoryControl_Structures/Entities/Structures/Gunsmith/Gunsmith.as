@@ -84,7 +84,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Bolt Action Rifle", "$rifle$", "rifle", "A handy bolt action rifle. $icon_rifleammo$\n\nDeals double damage when shooting from a long distance.\n\nPress [RMB] to stab with bayonet wich is good against shields.\n\nAmmo Capacity = 5\n\nDamage = 3.5\n\nFire Rate = 0.75");
+		ShopItem@ s = addShopItem(this, "Bolt Action Rifle", "$rifle$", "rifle", "A handy bolt action rifle. $icon_rifleammo$\n\nDeals double damage when shooting from a long distance.\n\nPress [RMB] to stab with bayonet wihch is good against shields.\n\nAmmo Capacity = 5\n\nDamage = 3.5\n\nFire Rate = 0.75");
 		AddRequirement(s.requirements, "coin", "", "Coins", 200);
 
 		s.customButton = true;
@@ -94,7 +94,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Lever Action Rifle", "$leverrifle$", "leverrifle", "A speedy lever action rifle.$icon_rifleammo$\n\nPress [RMB] to stab with bayonet wich is good against shields.\n\nAmmo Capacity = 8\n\nDamage = 1.33\n\nFire Rate = 3.75");
+		ShopItem@ s = addShopItem(this, "Lever Action Rifle", "$leverrifle$", "leverrifle", "A speedy lever action rifle.$icon_rifleammo$\n\nPress [RMB] to stab with bayonet wihch is good against shields.\n\nAmmo Capacity = 8\n\nDamage = 1.5\n\nFire Rate = 3.33");
 		AddRequirement(s.requirements, "coin", "", "Coins", 300);
 
 		s.customButton = true;

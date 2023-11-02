@@ -12,6 +12,7 @@
 #include "BulletCase.as";
 #include "Recoil.as";
 #include "DeityCommon.as";
+#include "CrouchCommon.as";
 
 const uint8 NO_AMMO_INTERVAL = 25;
  
@@ -157,8 +158,8 @@ void onTick(CBlob@ this)
 		if (holder !is null)
 		{
 			bool isBot = holder.getPlayer() == null;
-			//bool ignoresSlow = holder.getName() == "ninja" || holder.getName() == "soldat";
-			//if (!isBot && !ignoresSlow) holder.isKeyPressed(key_action2) || this.hasTag("a1") ? this.Tag("insane weight") : this.Untag("insane weight");
+			
+			u16 Burst = this.get_u16("Burst");
 
 			/*GunModule[] modules;
 			this.get("GunModules", @modules);
@@ -174,34 +175,6 @@ void onTick(CBlob@ this)
 				tempangle -= 360.0f;
 			else if (tempangle < -360.0f)
 				tempangle += 360.0f;
-			if (holder.isKeyPressed(key_action2))// || isBot)
-			{
-				u8 t = this.get_u8("a1time");
-				
-				this.Tag("a1");
-				this.set_u32("disable_a1", getGameTime()+t);
-			}
-			//if (point.isKeyPressed(key_action1) || isBot)
-			//{
-			//	u8 t = this.get_u8("holdtime");
-			//	
-			//	this.Tag("hold");
-			//	this.set_u32("disable_hold", getGameTime()+t);
-			//}
-			//if (!this.hasTag("a1") && !this.hasTag("hold")) 
-			//{
-			//	if (holder.isFacingLeft())
-			//	{
-			//		aimangle = 150+180 + Maths::Floor(tempangle/9);
-			//	}
-			//	else 
-			//	{
-			//		f32 dif = 0; // needed to compensate *circled* direction jump from 0 to 360
-			//		if (tempangle > -360.0f && tempangle < -180.0f) dif = 42.0f;
-			//		aimangle = 30+dif + Maths::Floor(tempangle/9);
-			//		//if (getGameTime()%30==0)printf(""+(tempangle));
-			//	}
-			//}
 
 			this.set_f32("gun_recoil_current", Maths::Lerp(this.get_f32("gun_recoil_current"), 0, 0.45f));
 
@@ -232,7 +205,7 @@ void onTick(CBlob@ this)
 			// Loop firing sound
 			if (this.hasTag("CustomSoundLoop"))
 			{
-				sprite.SetEmitSoundPaused(!(pressing_shoot && this.get_u8("clip") > 0 && !this.get_bool("doReload")));
+				sprite.SetEmitSoundPaused(!(pressing_shoot && this.get_u8("clip") > 0 && !this.get_bool("doReload") && Burst >= this.get_u16("CustomAccelerationSpeed")));
 			}
 
 			// Start reload sequence when pressing [R]
@@ -284,6 +257,7 @@ void onTick(CBlob@ this)
 
 				CBitStream params;
 				params.write_u8(actionInterval);
+				params.write_u8(Burst);
 				this.SendCommand(this.getCommandID("sync_interval"), params);
 
 				this.set_bool("beginReload", false);
@@ -342,33 +316,32 @@ void onTick(CBlob@ this)
 					}*/
 
 					// Shoot weapon
-					
-					actionInterval = settings.FIRE_INTERVAL;
-					//bool accurateHit = !this.hasTag("sniper") && getGameTime() >= (this.get_u32("lastshot") + actionInterval * 5);
+					if (!this.exists("CustomAccelerationSpeed"))
+					{
+						actionInterval = settings.FIRE_INTERVAL;
+					}
+					else
+					{
+						actionInterval = settings.FIRE_INTERVAL * Maths::Max(1, this.get_u16("CustomAccelerationSpeed") - Maths::Max(1, Burst));
+					}
 					this.set_u32("lastshot", getGameTime());
 
 					Vec2f fromBarrel = Vec2f((settings.MUZZLE_OFFSET.x / 3) * (this.isFacingLeft() ? 1 : -1), settings.MUZZLE_OFFSET.y + 1);
 					fromBarrel = fromBarrel.RotateBy(aimangle);
 
-					//bool a2 = holder.isKeyPressed(key_action2) || isBot;
-
 					f32 spr = 0;
-
-					f32 tempspr = settings.B_SPREAD * (this.get_u16("Burst") * settings.SPREAD_FACTOR);
+					f32 tempspr = settings.B_SPREAD * Maths::Max(1, (Burst * settings.SPREAD_FACTOR));
+					
+					if (this.hasTag("CrouchAiming"))
+					{
+						if (isCrouching(holder)) tempspr = tempspr * 0.5;
+					}
 						
-					if ((settings.B_SPREAD != 0 && settings.B_PER_SHOT == 1))// || this.hasTag("sniper"))
+					if ((settings.B_SPREAD != 0 && settings.B_PER_SHOT == 1))
 					{
 						if (tempspr > settings.MAX_SPREAD) spr = settings.MAX_SPREAD;
 						else spr = tempspr;
-						//f32 res = a2 ? 1 : 2;
-						//if (!isBot)
-						//{
-						//	u8 sniperspr = this.hasTag("sniper") ? 5 : 0;
-						//	if (!a2) spr += sniperspr;
-						//	spr *= res;
-						//}
 						
-						//if (!accurateHit) aimangle += XORRandom(2) != 0 ? -XORRandom(spr) : XORRandom(spr);
 						aimangle += XORRandom(2) != 0 ? -XORRandom(spr) : XORRandom(spr);
 					}
 
@@ -395,12 +368,21 @@ void onTick(CBlob@ this)
 							{
 								shootGun(this.getNetworkID(), aimangle, holder.getNetworkID(), this.getPosition() + fromBarrel);
 							}
-							if (tempspr < settings.MAX_SPREAD && !isBot) this.set_u16("Burst", this.get_u16("Burst") + 1); //Counting how many shots was made, not counting if spread limit was reached or holder is bot
+							
+							if (!this.exists("CustomAccelerationSpeed")) //the first option works to increase the spread as you shoot, second works for miniguns
+							{
+								if (tempspr < settings.MAX_SPREAD && !isBot) Burst++; //Counting how many shots was made, not counting if spread limit was reached or holder is bot
+							}
+							else
+							{
+								if (this.get_u16("CustomAccelerationSpeed") > Burst) Burst++; //Counting how many shots was made, not counting if gun fully accelerated
+							}
 						}
 					}
 
 					// Shooting sound
 					if (!this.hasTag("CustomSoundLoop")) sprite.PlaySound(settings.FIRE_SOUND, shoot_volume);
+					else if(Burst < this.get_u16("CustomAccelerationSpeed")) sprite.PlaySound(this.get_string("CustomSoundDuringAcceleration"), shoot_volume);
 
 					// Gun 'kickback' anim
 					this.set_f32("gun_recoil_current", this.exists("CustomGunRecoil") ? this.get_u32("CustomGunRecoil") : 3);
@@ -441,18 +423,29 @@ void onTick(CBlob@ this)
 					this.set_u8("clickReload", 1);
 				}
 			}
+			
+			if (!this.exists("CustomAccelerationSpeed")) //the first option works to increase the spread as you shoot, second works for miniguns
+			{
+				if (Burst != 0 && getGameTime() - this.get_u32("lastshot") > 5)
+				{ 
+					if ((getGameTime() - this.get_u32("lastshot")) % 2 == 0) Burst--;  //Decreasing burst after some time
+				}
+			}
+			else
+			{
+				if (Burst != 0 && getGameTime() - this.get_u32("lastshot") > 1 && !point.isKeyPressed(key_action1) && (getGameTime() - this.get_u32("lastshot")) % 5 == 0)
+				{
+					Burst--;  //Decreasing burst after some time
+				}
+			}
 
 			if (actionInterval != 0 || this.get_u8("actionInterval") != 0) this.set_u8("actionInterval", actionInterval);
-
-			if (this.get_u16("Burst") != 0 && getGameTime() - this.get_u32("lastshot") > 5) //Decreasing burst after some time
-			{ 
-				if ((getGameTime() - this.get_u32("lastshot")) % 2 == 0) this.set_u16("Burst", this.get_u16("Burst") - 1);
-			}
+			if (Burst != 0 || this.get_u16("Burst") != 0) this.set_u16("Burst", Burst);
+			
 			
 			//if (getGameTime()%15==0)printf(""+this.get_u8("actionInterval"));
 
 			sprite.ResetTransform();
-			//sprite.RotateBy( aimangle, holder.isFacingLeft() ? Vec2f(-3,3) : Vec2f(3,3) );
 			this.setAngleDegrees(aimangle);
 			sprite.SetOffset(Vec2f(this.get_f32("gun_recoil_current"), 0)); //Recoil effect for gun blob
 		}

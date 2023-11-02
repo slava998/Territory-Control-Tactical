@@ -90,6 +90,12 @@ void onInit(CBlob@ this)
 		AddRequirement(s.requirements, "blob", "mat_sulphur", "Sulphur", 50);
 
 		s.spawnNothing = true;
+	}*/
+	{
+		ShopItem@ s = addShopItem(this, "Placeholder", "$grenade$", "mat_grenade-4", "Placeholder.");
+		AddRequirement(s.requirements, "blob", "adminbuilder", "Placeholder", 1);
+
+		s.spawnNothing = true;
 	}
 	{
 		ShopItem@ s = addShopItem(this, "Soviet PPSH", "$ppsh$", "ppsh", "WW2 most-used russian weapon.\n\nСheap and weak. $icon_pistolammo$\n\nPress [RMB] to dash horizontally.\n\nAmmo Capacity = 72\n\nDamage = 1\n\nFire Rate = 15");
@@ -143,12 +149,18 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Flame Grenades (4)", "$flamegrenade$", "mat_flamegrenade-4", "Flame grenades for grenadelaunchers.");
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 6);
 		AddRequirement(s.requirements, "blob", "mat_sulphur", "Sulphur", 50);
 		AddRequirement(s.requirements, "blob", "mat_oil", "Oil", 50);
 		
+
+		s.spawnNothing = true;
+	}*/
+	{
+		ShopItem@ s = addShopItem(this, "Placeholder", "$grenade$", "mat_grenade-4", "Placeholder.");
+		AddRequirement(s.requirements, "blob", "adminbuilder", "Placeholder", 1);
 
 		s.spawnNothing = true;
 	}
@@ -162,7 +174,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Nitro 700", "$nitro700_icon$", "nitro700", "Strong gun used to take down buffalos, not badgers.\n\nPerfect for aggressive attack. $icon_sniperammo$\n\nPress [RMB] to stab with bayonet wich is good against shields.\n\nAmmo Capacity = 2\n\nDamage = 6.8\n\nFire Rate = 1");
+		ShopItem@ s = addShopItem(this, "Nitro 700", "$nitro700_icon$", "nitro700", "Strong gun used to take down buffalos, not badgers.\n\nPerfect for aggressive attack. $icon_sniperammo$\n\nPress [RMB] to stab with bayonet which is good against shields.\n\nAmmo Capacity = 2\n\nDamage = 6.8\n\nFire Rate = 1");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 350);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 8);
 		AddRequirement(s.requirements, "blob", "mat_copperingot", "Copper Ingot", 8);
@@ -201,7 +213,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 1;
 
 		s.spawnNothing = true;
-	}*/
+	}
 	{
 		ShopItem@ s = addShopItem(this, "Bazooka", "$icon_bazooka$", "bazooka", "A long tube capable of shooting rockets. Make sure nobody is standing behind it.\n\nUses Small Rockets.");
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 5);
