@@ -5,6 +5,9 @@
 
 int zoomLevel = 1; // we can declare a global because this script is just used by myPlayer
 
+f32 minZoom = 0.5f;
+f32 maxZoom = 2.0f;
+
 void onInit(CBlob@ this)
 {
 	this.set_s32("tap_time", getGameTime());
@@ -326,19 +329,17 @@ void AdjustCamera(CBlob@ this, bool is_in_render)
 		zoomSpeed *= getRenderApproximateCorrectionFactor();
 	}
 
-	f32 minZoom = 0.5f; // TODO: make vars
-	f32 maxZoom = 2.0f;
-
-	if (zoomLevel == 1 && (this.wasKeyPressed(key_use) || this.wasKeyPressed(key_pickup)))
+	if (zoomLevel == 2 && (this.wasKeyPressed(key_use) || this.wasKeyPressed(key_pickup)))
 	{
 		zoom = 1.0f;
 	}
 	
 	f32 zoom_target = 1.0f;
 	switch (zoomLevel) {
-		case 0: zoom_target = 0.5f; break;
-		case 1: zoom_target = 1.0f; break;
-		case 2: zoom_target = 2.0f; break;
+		case 0: zoom_target = 0.2f; break;
+		case 1: zoom_target = 0.5f; break;
+		case 2: zoom_target = 1.0f; break;
+		case 3: zoom_target = 2.0f; break;
 	}
 
 	CBlob@ carried = this.getCarriedBlob();
@@ -375,21 +376,30 @@ void ManageCamera(CBlob@ this)
 		if (carried.get_f32("scope_zoom") != 0.00f) binoculars = true;
 		scope_zoom = carried.get_f32("scope_zoom");
 	}
+	
+	if (zoomLevel == 0 && scope_zoom < 0.3) //scope zoom equal to 0.3 gives the same field of view as camera zoom 0.25
+	{
+		zoomLevel = 1;
+	}
 
 	// mouse look & zoom
 	if ((getGameTime() - this.get_s32("tap_time") > 5) && controls !is null)
 	{
 		if (controls.isKeyJustPressed(controls.getActionKeyKey(AK_ZOOMOUT)))
 		{
-			if (zoomLevel == 2)
+			if (zoomLevel == 3)
+			{
+				zoomLevel = 2;
+			}
+			else if (zoomLevel == 2)
 			{
 				zoomLevel = 1;
 			}
-			else if (zoomLevel == 1)
+			else if (zoomLevel == 4)
 			{
-				zoomLevel = 0;
+				zoomLevel = 1;
 			}
-			else if (zoomLevel == 3)
+			else if (zoomLevel == 1 && scope_zoom >= 0.3) //scope zoom equal to 0.3 gives the same field of view as camera zoom 0.25
 			{
 				zoomLevel = 0;
 			}
@@ -398,17 +408,21 @@ void ManageCamera(CBlob@ this)
 		}
 		else  if (controls.isKeyJustPressed(controls.getActionKeyKey(AK_ZOOMIN)))
 		{
-			if (zoomLevel == 0)
+			if (zoomLevel == 1)
+			{
+				zoomLevel = 4;
+			}
+			else if (zoomLevel == 4)
 			{
 				zoomLevel = 3;
 			}
-			else if (zoomLevel == 3)
+			else if (zoomLevel == 2)
 			{
-				zoomLevel = 2;
+				zoomLevel = 3;
 			}
-			else if (zoomLevel == 1)
+			else if (zoomLevel == 0)
 			{
-				zoomLevel = 2;
+				zoomLevel = 1;
 			}
 
 			Tap(this);
