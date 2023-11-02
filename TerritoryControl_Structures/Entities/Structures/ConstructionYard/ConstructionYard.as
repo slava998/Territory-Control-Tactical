@@ -230,7 +230,7 @@ void onInit(CBlob@ this)
 		s.customButton = true;
 		s.buttonwidth = 4;
 		s.buttonheight = 2;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Drone!\n\nRequres batteries to fly.", "$uav_icon$", "uav", "$uav$\n\n\n\nRemotely controlled drone, with a machinegun on its hull and controller." + "", false, false);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 16);
@@ -241,7 +241,7 @@ void onInit(CBlob@ this)
 		s.buttonwidth = 4;
 		s.buttonheight = 2;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Helichopper", "$helichopper$", "helichopper", "$helichopper$\n\n\n\n\nBoss-helicopter!" + "", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 50);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 40);
@@ -265,7 +265,7 @@ void onInit(CBlob@ this)
 		s.customButton = true;
 		s.buttonwidth = 4;
 		s.buttonheight = 3;
-	}
+	}*/
 	{
 		ShopItem@ s = addShopItem(this, "Self Propelled Howitzer", "$icon_sfcannon$", "sfcannon", "$icon_sfcannon$\n\n\n\n\n" + "A huge gun on its own propulsion system.\nDesigned to completely destroy heavily armored fortifications.\nUses high caliber shells.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 48);
@@ -277,7 +277,7 @@ void onInit(CBlob@ this)
 		s.buttonwidth = 4;
 		s.buttonheight = 3;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Gunship", "$gunshipicon$", "gunship", "$gunshipicon$\n\n\n\n\n\n\n\nA massive ship with an incendiary mortar on its nose.", false, true);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 80);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 24);
