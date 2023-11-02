@@ -209,10 +209,11 @@ void onInit(CBlob@ this)
 	}
 	{
 		ShopItem@ s = addShopItem(this, "Minicopter", "$icon_minicopter$", "minicopter", "$icon_minicopter$\n\n\n\n\n" + "A fast helicopter used for scouting, transport and aerial support.\n\n[W]/[S] for vertical throttle, [A]/[D] for horizontal throttle.\n\nHas two slots for turrets.", false, true);
-		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 300);
-		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 16);
+		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 500);
+		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 20);
+		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 16);
 		AddRequirement(s.requirements, "blob", "mat_copperwire", "Copper Wire", 20);
-		AddRequirement(s.requirements, "coin", "", "Coins", 850);
+		AddRequirement(s.requirements, "coin", "", "Coins", 1800);
 
 		s.crate_icon = 0;
 		s.customButton = true;
