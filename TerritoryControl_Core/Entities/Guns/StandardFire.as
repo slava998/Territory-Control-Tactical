@@ -257,7 +257,7 @@ void onTick(CBlob@ this)
 
 				CBitStream params;
 				params.write_u8(actionInterval);
-				params.write_u8(Burst);
+				params.write_u16(Burst);
 				this.SendCommand(this.getCommandID("sync_interval"), params);
 
 				this.set_bool("beginReload", false);
