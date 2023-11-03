@@ -929,7 +929,7 @@ string getRank(string &in username, SColor &out col, CPlayer@ p)
 		
 		case 177551342: // Slava6
 		{
-			col = SColor(255, 80, 80, 255);
+			col = SColor(255, 100, 100, 255);
 			return "TC:T Creator";
 		}
 		break;
