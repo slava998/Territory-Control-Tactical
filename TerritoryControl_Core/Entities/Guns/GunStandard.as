@@ -189,7 +189,7 @@ void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
 			this.Sync("actionInterval", true);
 			//printf("TIME --- "+time);
 		}
-		if (params.saferead_u8(Burst))
+		if (params.saferead_u16(Burst))
 		{
 			this.set_u16("Burst", Burst);
 			this.Sync("Burst", true);
