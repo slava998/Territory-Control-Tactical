@@ -31,14 +31,11 @@ void onRender(CSprite@ this)
 			GUI::GetTextDimensions(name, dimensions);
 			GUI::DrawText(name, getDriver().getScreenPosFromWorldPos(mouseBlob.getPosition() - Vec2f(0, -mouseBlob.getHeight() / 2)) - Vec2f(dimensions.x / 2, -8.0f), color_white);
 		}
-		else if (u_showtutorial) //disabling help does not disable player names
-		{
 			Vec2f dimensions;
 			GUI::SetFont("menu");
 			GUI::GetTextDimensions(mouseBlob.getInventoryName(), dimensions);
 			GUI::DrawText(mouseBlob.getInventoryName(), getDriver().getScreenPosFromWorldPos(mouseBlob.getPosition() - Vec2f(0, -mouseBlob.getHeight() / 2)) - Vec2f(dimensions.x / 2, -8.0f), color_white);	
 			//	mouseBlob.RenderForHUD( RenderStyle::outline_front );	
-		}	
 	}
 }
 

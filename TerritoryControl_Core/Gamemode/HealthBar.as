@@ -27,15 +27,9 @@ void onRender(CSprite@ this)
 		//bool mecha = false;
 		//if (!blob.hasTag("flesh")) mecha = true;
 		Vec2f blobpos = (Vec2f(pos2d.x-dim.x,pos2d.y+y)+Vec2f(pos2d.x+dim.x,pos2d.y+y+dim.y))*0.5f;
-		bool tutorial = false;
-		if (u_showtutorial) tutorial = true;
 		
-		f32 offset_y_overheal = 12;
-		if (u_showtutorial)
-		{
-			dim = Vec2f(44, 16);
-			offset_y_overheal = 20;
-		}
+		dim = Vec2f(44, 16);
+		f32 offset_y_overheal = 20;
 		
 		if (initialHealth > 0.0f)
 		{
@@ -47,7 +41,7 @@ void onRender(CSprite@ this)
 				GUI::DrawRectangle(Vec2f(pos2d.x - dim.x - 2, pos2d.y + y - 2), Vec2f(pos2d.x + dim.x + 2, pos2d.y + y + dim.y + 2));
 				GUI::DrawRectangle(Vec2f(pos2d.x - dim.x + 2, pos2d.y + y + 2), Vec2f(pos2d.x - dim.x + ratio_clamped * 2.0f * dim.x - 2, pos2d.y + y + dim.y - 2), (chicken ? SColor(0xff11301d) : SColor(0xffac1512)));
 				//(chicken ? SColor(0xff649b0d) : (mecha ? SColor(0xff877b5c) : SColor(0xffac1512)))
-				if (tutorial) GUI::DrawTextCentered(formatFloat((blobHealth <= initialHealth ? blobHealth : initialHealth)*2.0f,'0',3,1)+" Hearts", blobpos+Vec2f(0.0f, 2.0f), SColor(0xffffffff));
+				GUI::DrawTextCentered(formatFloat((blobHealth <= initialHealth ? blobHealth : initialHealth)*2.0f,'0',3,1)+" Hearts", blobpos+Vec2f(0.0f, 2.0f), SColor(0xffffffff));
 			}
 			
 			if (blobHealth > initialHealth && !blob.hasTag("dead"))
@@ -55,20 +49,20 @@ void onRender(CSprite@ this)
 				f32 overheal = blobHealth - initialHealth;
 				f32 ratio_overheal = overheal / initialHealth;
 				f32 heart_lenght = dim.x/initialHealth*overheal;
-				f32 final_overheal_lenght = Maths::Min(Maths::Max((heart_lenght * ratio_overheal), (tutorial ? 16 : 8)), 640);
+				f32 final_overheal_lenght = Maths::Min(Maths::Max((heart_lenght * ratio_overheal), 8), 640);
 				
 				GUI::DrawRectangle(Vec2f(pos2d.x - final_overheal_lenght - 2, pos2d.y + y - 2 + offset_y_overheal),
 					Vec2f(pos2d.x + final_overheal_lenght + 2, pos2d.y + y + dim.y + 2 + offset_y_overheal));
 				GUI::DrawRectangle(Vec2f(pos2d.x - final_overheal_lenght + 2, pos2d.y + y + 2 + offset_y_overheal),
 					Vec2f(pos2d.x + final_overheal_lenght - 2, pos2d.y + y + dim.y - 2 + offset_y_overheal), SColor(0xfffbb818));
 				
-				if (tutorial) GUI::DrawTextCentered("+ " + formatFloat(overheal*2.0f,'0',3,1), blobpos+Vec2f(0.0f, 2.0f + offset_y_overheal), SColor(0xffffffff));
+				GUI::DrawTextCentered("+ " + formatFloat(overheal*2.0f,'0',3,1), blobpos+Vec2f(0.0f, 2.0f + offset_y_overheal), SColor(0xffffffff));
 				// GUI::DrawRectangle(Vec2f(pos2d.x - (overheal * 12) - 4, pos2d.y + y - 2 + offset_y_overheal), Vec2f(pos2d.x + (overheal * 12) + 4, pos2d.y + y + dim.y + 2 + offset_y_overheal));
 				// GUI::DrawRectangle(Vec2f(pos2d.x - (overheal * 12), pos2d.y + y + 2 + offset_y_overheal), Vec2f(pos2d.x + (overheal * 12), pos2d.y + y + dim.y - 2 + offset_y_overheal), SColor(0xfffbb818));
 			}
 		}
 	}
-	//shows shield health
+	//Show shield health
 	if (blob is null) return;
 	CPlayer@ player = blob.getPlayer();
 	if (player is null) return;
