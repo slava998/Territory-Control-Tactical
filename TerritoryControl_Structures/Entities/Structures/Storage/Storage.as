@@ -250,7 +250,7 @@ void updateLayers(CBlob@ this, string blobName, u32 cur_quantity)
 
 bool isInventoryAccessible(CBlob@ this, CBlob@ forBlob)
 {
-	return (forBlob.getTeamNum() == this.getTeamNum()) && forBlob.isOverlapping(this);
+	return ((this.getTeamNum() > 100 ? true : forBlob.getTeamNum() == this.getTeamNum()) && forBlob.isOverlapping(this));
 }
 
 //Moved this to SmartStorageCore.as
