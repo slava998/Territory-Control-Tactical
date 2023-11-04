@@ -611,7 +611,7 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.size.Set(40, 24);
 		blocks[2].push_back(b);
 	}
-	/*{
+	{
 		BuildBlock b(0, "druglab", "$icon_druglab$", "Chemical Laboratory:\n\nA laboratory used for production of chemicals, ranging from methane to various kinds of drugs.");
 		AddRequirement(b.reqs, "blob", "mat_steelingot", "Steel Ingot", 10);
 		AddRequirement(b.reqs, "blob", "mat_copperingot", "Copper Ingot", 30);
@@ -620,7 +620,7 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.size.Set(32, 40);
 		blocks[2].push_back(b);
 	}
-	{
+	/*{
 		BuildBlock b(0, "chickenassembler", "$icon_chickenassembler$", "UPF Assembly Line:\n\nA reverse-engineered assembly line used to manufacture some of the UPF products.");
 		AddRequirement(b.reqs, "blob", "mat_steelingot", "Steel Ingot", 20);
 		AddRequirement(b.reqs, "blob", "mat_ironingot", "Iron Ingot", 10);
@@ -640,7 +640,7 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.size.Set(24, 24);
 		blocks[2].push_back(b);
 	}
-	/*{
+	{
 		BuildBlock b(0, "chemlab", "$icon_chemlab$", "Chemical Production Machine:\n\nA machine capable of manufacturing basic drugs and chemicals.");
 		AddRequirement(b.reqs, "blob", "mat_steelingot", "Steel Ingot", 20);
 		AddRequirement(b.reqs, "blob", "mat_ironingot", "Iron Ingot", 10);
@@ -650,7 +650,7 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.size.Set(48, 24);
 		blocks[2].push_back(b);
 	}
-	{
+	/*{
 		BuildBlock b(0, "lgenerator", "$lgenerator$", "Liquid fuel generator.\nConverts methane into oil.");
 		AddRequirement(b.reqs, "blob", "mat_ironingot", "Iron Ingot", 24);
 		AddRequirement(b.reqs, "blob", "mat_copperingot", "Copper Ingot", 12);
