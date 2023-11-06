@@ -159,6 +159,10 @@ void onTick(CBlob@ this)
 			}
 		}
 	}
+	if (!isClient()) return;
+	CSprite@ sprite = this.getSprite();
+	sprite.ResetTransform();
+	sprite.RotateBy(this.getVelocity().Angle() + (this.isFacingLeft() ? 180 : 0), Vec2f());
 }
 
 f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitterBlob, u8 customData)
