@@ -248,7 +248,6 @@ void onTick(CBlob@ this)
 CBlob@ FindStorage(CBlob@ this, u8 team)
 {
 	if (team >= 100) return null;
-	if (XORRandom(3)==0) return null; // 33% chance not to put oil in ur storage
 
 	CBlob@[] blobs;
 	bool is_oil = this.get_string("mat_prop") == "mat_oil";
