@@ -1,5 +1,6 @@
 ﻿#include "Descriptions.as";
 #include "MakeMat.as";
+#include "CheckSpam.as";
 
 const u32 tick_freq = 45*2;
 
