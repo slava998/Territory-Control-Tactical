@@ -158,14 +158,14 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	/*{
+	{
 		ShopItem@ s = addShopItem(this, "Rocket Pack Version 2", "$icon_jetpackv2$", "jetpackv2", "A small rocket-propelled backpack.\nOccupies the Torso slot.\nPress [Shift] to Fly!\nUses oil.");
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 6);
 		AddRequirement(s.requirements, "blob", "mat_fuel", "Fuel", 25);
 		AddRequirement(s.requirements, "coin", "", "Coins", 300);
 
 		s.spawnNothing = true;
-	}*/
+	}
 	{
 		ShopItem@ s = addShopItem(this, "Backpack", "$icon_backpack$", "backpack", "A large leather backpack that can be equipped and used as an inventory.\nOccupies the Torso slot");
 		AddRequirement(s.requirements, "coin", "", "Coins", 150);
@@ -202,7 +202,7 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	/*{
+	{
 		ShopItem@ s = addShopItem(this, "Dart Gun", "$icon_dartgun$", "dartgun", "Dart Gun that can be used to remotely deliver drugs.");
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 6);
 		AddRequirement(s.requirements, "blob", "mat_methane", "Methane", 50);
@@ -213,7 +213,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 1;
 
 		s.spawnNothing = true;
-	}*/
+	}
 	{
 		ShopItem@ s = addShopItem(this, "Bear Trap", "$icon_beartrap$", "beartrap", "An intricate device used for capturing of oversized badgers.");
 		AddRequirement(s.requirements, "blob", "mat_stone", "Stone", 100);

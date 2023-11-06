@@ -69,7 +69,7 @@ void onInit(CBlob@ this)
 	
 		s.spawnNothing = true;
 	}
-	/*{
+	{
 		ShopItem@ s = addShopItem(this, "Katana", "$katana$", "katana", "Japanese melee weapon.\nPerfect for introducing enemies' organs to themselves.");
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel ingot", 10);
 		AddRequirement(s.requirements, "coin", "", "Coins", 500);
@@ -79,7 +79,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 1;
 		
 		s.spawnNothing = true;
-	}*/
+	}
 	{
 		ShopItem@ s = addShopItem(this, "Light Protective Vest", "$icon_lightvest$", "lightvest", "A light armor.\nCheap and flimsy. Gives some protection against all bullets.\n\nOccupies the Torso slot");
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 6);
@@ -109,7 +109,7 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	/*{
+	{
 		ShopItem@ s = addShopItem(this, "Rendezook", "$icon_rendezook$", "rendezook", "A replica of a rocket launcher found behind the UPF shop in a trash can.\nDoes not seem to hurt anybody.");
 		AddRequirement(s.requirements, "coin", "", "Coins", 350);
 
@@ -118,7 +118,7 @@ void onInit(CBlob@ this)
 		s.buttonheight = 1;
 		
 		s.spawnNothing = true;
-	}*/
+	}
 	{
 		ShopItem@ s = addShopItem(this, "Bushy Helm", "$bush$", "bushyhelm", "Add bush camo to helm.");
 		AddRequirement(s.requirements, "blob", "militaryhelmet", "Combat Helmet", 1);
@@ -148,7 +148,7 @@ void onInit(CBlob@ this)
 
 		s.spawnNothing = true;
 	}
-	/*{
+	{
 		ShopItem@ s = addShopItem(this, "Crossbow", "$crossbow$", "crossbow", "A hand-made ranged weapon.\nUses arrows to shoot.\nYou can set arrow type while holding different arrows near it.");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 150);
 		AddRequirement(s.requirements, "coin", "", "Coins", 150);
@@ -186,7 +186,7 @@ void onInit(CBlob@ this)
 		AddRequirement(s.requirements, "blob", "mat_concrete", "Concrete", 75);
 
 		s.spawnNothing = true;
-	}*/
+	}
 	{
 		ShopItem@ s = addShopItem(this, "Royal Guard Armor", "$icon_royalarmor$", "royalarmor", "A heavy armor that offers high damage resistance at cost of low mobility. Has a shield which is tough enough to block bullets.");
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 10);

@@ -27,7 +27,7 @@ void onInit(CBlob@ this)
 	AddIconToken("$icon_howitzer$", "Icon_Vehicles.png", Vec2f(24, 24), 4);
 	//AddIconToken("$icon_zeppelin$", "Zepplin.png", Vec2f(181, 90), 0);
 	//AddIconToken("$icon_autocannon$", "AutocannonIcon.png", Vec2f(96, 48), 0);
-	//AddIconToken("$icon_sfcannon$", "Icon_SFcannon.png", Vec2f(101, 32), 0);
+	AddIconToken("$icon_sfcannon$", "Icon_SFcannon.png", Vec2f(101, 32), 0);
 	//AddIconToken("$icon_minethrower$", "Icon_Minethrower.png", Vec2f(18, 14), 0);
 	//AddIconToken("$icon_biggeriron$", "Icon_BiggerIron.png", Vec2f(40, 14), 0);
 	AddIconToken("$mat_ironingot$", "Material_IronIngot.png", Vec2f(16, 16), 1);;
