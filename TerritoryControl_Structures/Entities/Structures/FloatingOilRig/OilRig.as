@@ -80,7 +80,7 @@ void onTick(CSprite@ this)
 	
 	if (isClient())
 	{
-		if (blob.getTickSinceCreated() == 1 || !blob.hasTag("initializded_layers"))
+		if (blob.getTickSinceCreated() == 1 || (!blob.hasTag("initializded_layers") && blob.isOnScreen()))
 		{
 			CBlob@ blob = this.getBlob();
 			if (blob is null) return;
@@ -235,11 +235,11 @@ void onTick(CBlob@ this)
 			CBlob@ storage = FindStorage(this, this.getTeamNum());
 			if (storage !is null)
 			{
-				MakeMat(storage, this.getPosition(), this.get_string("mat_prop"), XORRandom(3));
+				MakeMat(storage, this.getPosition(), this.get_string("mat_prop"), XORRandom(5) + 3);
 			}
 			else if (this.getInventory().getCount(this.get_string("mat_prop")) < 1600)
 			{
-				MakeMat(this, this.getPosition(), this.get_string("mat_prop"), XORRandom(3));
+				MakeMat(this, this.getPosition(), this.get_string("mat_prop"), XORRandom(5) + 3);
 			}
 		}
 	}
