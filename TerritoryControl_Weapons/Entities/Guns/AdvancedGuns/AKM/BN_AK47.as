@@ -42,7 +42,7 @@ void onInit(CBlob@ this)
 	settings.G_BACK_T = 1; //Should we recoil the arm back time? (aim goes up, then back down with this, if > 0, how long should it last)
 
 	//Sound
-	settings.FIRE_SOUND = "BN_AK47Fire.ogg"; //Sound when shooting
+	settings.FIRE_SOUND = "AKM_Fire.ogg"; //Sound when shooting
 	settings.RELOAD_SOUND = "AKM_Reloading.ogg"; //Sound when reloading
 
 	//Offset
