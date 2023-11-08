@@ -66,7 +66,7 @@ void onInit(CBlob@ this)
 	settings.RELOAD_SOUND = "LeverRifle_load.ogg"; //Sound when reloading
 
 	//Offset
-	settings.MUZZLE_OFFSET = Vec2f(-19, -2); //Where the muzzle flash appears
+	settings.MUZZLE_OFFSET = Vec2f(-17, -2); //Where the muzzle flash appears
 
 	this.set("gun_settings", @settings);
 
@@ -95,7 +95,7 @@ void onTick(CBlob@ this)
 			this.Tag("stabbing");
 
 			HitInfo@[] hitInfos;
-			if (getMap().getHitInfosFromArc(this.getPosition(), -(holder.getAimPos() - this.getPosition()).Angle(), 30, 28, this, @hitInfos))
+			if (getMap().getHitInfosFromArc(this.getPosition(), -(holder.getAimPos() - this.getPosition()).Angle(), 45, 28, this, @hitInfos))
 			{
 				for (uint i = 0; i < hitInfos.length; i++)
 				{
@@ -104,7 +104,7 @@ void onTick(CBlob@ this)
 					{
 						if (isServer())
 						{
-							holder.server_Hit(blob, blob.getPosition(), Vec2f(), 2.0f, HittersTC::bayonet, true);
+							holder.server_Hit(blob, blob.getPosition(), Vec2f(), 3.6f, HittersTC::bayonet, true);
 						}
 					}
 				}
