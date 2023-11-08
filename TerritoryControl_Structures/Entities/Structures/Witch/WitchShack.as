@@ -100,7 +100,7 @@ void onInit(CBlob@ this)
 		ShopItem@ s = addShopItem(this, "Infernal Stone", "$infernalstone$", "infernalstone", "It's hot!");
 		AddRequirement(s.requirements, "blob", "meteor", "Meteor", 1);
 		AddRequirement(s.requirements, "blob", "mat_plasteel", "Plasteel", 100);
-		AddRequirement(s.requirements, "blob", "mat_wilmet", "Wilmet", 250);
+		AddRequirement(s.requirements, "blob", "mat_mithril", "Mithril Ore", 250);
 		s.spawnNothing = true;
 	}
 	{
@@ -108,12 +108,12 @@ void onInit(CBlob@ this)
 		AddRequirement(s.requirements, "coin", "", "Coins", 30);
 		s.spawnNothing = true;
 	}
-	/*{
+	{
 		ShopItem@ s = addShopItem(this, "A chemical tip", "$paper$", "tip", "A paper with drug and chemical laboratories tips. Some recipes may need different laboratories.");
 		AddRequirement(s.requirements, "coin", "", "Coins", 200);
 		s.spawnNothing = true;
 	}
-	{
+	/*{
 		ShopItem@ s = addShopItem(this, "Dark Magic Scroll", "$moundscroll$", "moundscroll", "An ancient dark magic scroll.\nI offer those so many because uh, i robbered the owner!");
 		AddRequirement(s.requirements, "blob", "mat_mithrilenriched", "Enriched mithril", 250);
 		AddRequirement(s.requirements, "blob", "mat_wilmet", "Wilmet", 50);
