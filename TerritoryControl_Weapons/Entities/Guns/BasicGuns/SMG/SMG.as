@@ -14,22 +14,22 @@ void onInit(CBlob@ this)
 	//General
 	settings.CLIP = 50; //Amount of ammunition in the gun at creation
 	settings.TOTAL = 50; //Max amount of ammo that can be in a clip
-	settings.FIRE_INTERVAL = 3; //Time in between shots
+	settings.FIRE_INTERVAL = 2; //Time in between shots
 	settings.RELOAD_TIME = 45; //Time it takes to reload (in ticks)
 	settings.AMMO_BLOB = "mat_pistolammo"; //Ammunition the gun takes
 
 	//Bullet
 	//settings.B_PER_SHOT = 1; //Shots per bullet | CHANGE B_SPREAD, otherwise both bullets will come out together
 	//settings.B_GRAV = Vec2f(0, 0.001); //Bullet gravity drop
-	settings.B_SPEED = 110; //Bullet speed, STRONGLY AFFECTED/EFFECTS B_GRAV
-	settings.B_TTL = 18; //TTL = 'Time To Live' which determines the time the bullet lasts before despawning
-	settings.B_DAMAGE = 0.6f; //1 is 1 heart
+	settings.B_SPEED = 45; //Bullet speed, STRONGLY AFFECTED/EFFECTS B_GRAV
+	settings.B_TTL = 20; //TTL = 'Time To Live' which determines the time the bullet lasts before despawning
+	settings.B_DAMAGE = 0.4f; //1 is 1 heart
 	settings.B_TYPE = HittersTC::bullet_low_cal; //Type of bullet the gun shoots | hitter
 	
 	//Spread & Cursor
 	settings.B_SPREAD = 3; //the higher the value, the more 'uncontrollable' bullets get
 	settings.INCREASE_SPREAD = true; //Should the spread increase as you shoot. Default is false
-	settings.SPREAD_FACTOR = 0.0833; //How much spread will increase as you shoot. Formula of increasing is: B_SPREAD * Max:(SPREAD_FACTOR, (Number of shoots * SPREAD_FACTOR)). Does not affect cursor.
+	settings.SPREAD_FACTOR = 0.041; //How much spread will increase as you shoot. Formula of increasing is: B_SPREAD * Max:(SPREAD_FACTOR, (Number of shoots * SPREAD_FACTOR)). Does not affect cursor.
 	settings.MAX_SPREAD = 10; //Maximum spread the weapon can reach. Also determines how big cursor can become
 	settings.CURSOR_SIZE = 15; //Size of crosshair that appear when you hold a gun
 	settings.ENLARGE_CURSOR = true; //Should we enlarge cursor as you shoot. Default is true
@@ -53,22 +53,7 @@ void onInit(CBlob@ this)
 	
 	//Custom
 	this.set_string("CustomSoundPickup", "SMG_Pickup.ogg");
-}
-
-void onTick(CBlob@ this)
-{
-	if (this.isAttached())
-	{
-		AttachmentPoint@ point = this.getAttachments().getAttachmentPointByName("PICKUP");
-		CBlob@ holder = point.getOccupied();
-		
-		if (holder is null) return;
-
-		if (point.isKeyJustPressed(key_action2) && getGameTime() > this.get_u32("nextDash") && !isKnocked(holder))
-		{
-			holder.setVelocity(Vec2f(holder.isFacingLeft()?(-4.0f + holder.getVelocity().x) : (holder.getVelocity().x + 4.0f), -1.0f));
-			this.set_u32("nextDash", getGameTime() + 60);
-			if(isClient()) this.getSprite().PlaySound("ArgLong");	
-		}
-	}
+	this.set_f32("CustomBulletLength", 6.5f);
+	this.set_f32("CustomBulletWidth", 1.3f);
+	this.set_string("CustomBullet", "item_bullet_alt.png");
 }

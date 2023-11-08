@@ -98,7 +98,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Soviet PPSH", "$ppsh$", "ppsh", "WW2 most-used russian weapon.\n\nСheap and weak. $icon_pistolammo$\n\nPress [RMB] to dash horizontally.\n\nAmmo Capacity = 72\n\nDamage = 1\n\nFire Rate = 15");
+		ShopItem@ s = addShopItem(this, "Soviet PPSH", "$ppsh$", "ppsh", "WW2 most-used russian weapon.\n\nStrong at short range, but weak at long range.$icon_pistolammo$\n\nAmmo Capacity = 72\n\nDamage = 0.5\n\nFire Rate = 15");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 150);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 10);
 		AddRequirement(s.requirements, "coin", "", "Coins", 750);

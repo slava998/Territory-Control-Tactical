@@ -68,7 +68,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Bobby Gun", "$smg$", "smg", "A submachine gun. $icon_pistolammo$\n\nPress [RMB] to dash horizontally.\n\nAmmo Capacity = 50\n\nDamage = 0.6\n\nFire Rate = 10");
+		ShopItem@ s = addShopItem(this, "Bobby Gun", "$smg$", "smg", "A submachine gun. $icon_pistolammo$\n\nAmmo Capacity = 50\n\nDamage = 0.4\n\nFire Rate = 15");
 		AddRequirement(s.requirements, "coin", "", "Coins", 100);
 
 		s.customButton = true;
