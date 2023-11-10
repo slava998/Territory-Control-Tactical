@@ -957,8 +957,8 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.buildOnGround = true;
 		b.size.Set(24, 32);
 		blocks[4].push_back(b);
-	/*}
-	{
+	}
+	/*{
 		BuildBlock b(0, "gate", "$icon_gate$", "Wooden Gate:\n\nHeavy door.\n\nCan be only opened from inside.");
 		AddRequirement(b.reqs, "blob", "mat_ironingot", "Iron Ingot", 2);
 		AddRequirement(b.reqs, "blob", "mat_wood", "Wood", 750);
