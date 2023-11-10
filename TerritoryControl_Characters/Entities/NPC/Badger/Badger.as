@@ -162,7 +162,15 @@ void onTick(CBlob@ this)
 	if (!isClient()) return;
 	CSprite@ sprite = this.getSprite();
 	sprite.ResetTransform();
-	if (!this.hasTag("dead")) sprite.RotateBy(this.getVelocity().Angle() + (this.isFacingLeft() ? 180 : 0), Vec2f());
+
+	f32 rot = this.getVelocity().Angle() + (this.isFacingLeft() ? 180 : 0);
+	if(!this.isFacingLeft())
+	{
+		if(rot <= 90) rot = Maths::Clamp(rot, 0, 50);
+		else rot = Maths::Clamp(rot, 310, 360);
+	}
+	else rot = Maths::Clamp(rot, 310, 410);
+	if (!this.hasTag("dead")) sprite.RotateBy(-rot, Vec2f());
 }
 
 f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitterBlob, u8 customData)
