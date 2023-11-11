@@ -950,14 +950,14 @@ void addCommonBuilderBlocks(BuildBlock[][]@ blocks, int teamnum = 7)
 		b.size.Set(16, 24);
 		blocks[4].push_back(b);
 	}
-	{
+	/*{
 		BuildBlock b(0, "altar", "$icon_altar$", "Altar:\n\nWorship your idols here. Needs to be carved first.");
 		AddRequirement(b.reqs, "blob", "mat_stone", "Stone", 2000);
 		AddRequirement(b.reqs, "coin", "", "Coins", 250);
 		b.buildOnGround = true;
 		b.size.Set(24, 32);
 		blocks[4].push_back(b);
-	}
+	}*/
 	/*{
 		BuildBlock b(0, "gate", "$icon_gate$", "Wooden Gate:\n\nHeavy door.\n\nCan be only opened from inside.");
 		AddRequirement(b.reqs, "blob", "mat_ironingot", "Iron Ingot", 2);
