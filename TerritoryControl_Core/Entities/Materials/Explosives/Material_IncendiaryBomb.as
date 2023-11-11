@@ -106,8 +106,11 @@ void DoExplosion(CBlob@ this)
 				CBlob@ blob = blobs[i];
 				if (blob !is null && (blob.hasTag("flesh") || blob.hasTag("plant"))) 
 				{
-					map.server_setFireWorldspace(blob.getPosition(), true);
-					blob.server_Hit(blob, blob.getPosition(), Vec2f(0, 0), 0.5f, Hitters::fire);
+					if(!blob.rayBlocked)
+					{
+						map.server_setFireWorldspace(blob.getPosition(), true);
+						blob.server_Hit(blob, blob.getPosition(), Vec2f(0, 0), 0.5f, Hitters::fire);
+					}
 				}
 			}
 		}
