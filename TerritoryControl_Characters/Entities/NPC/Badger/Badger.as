@@ -170,7 +170,7 @@ void onTick(CBlob@ this)
 		else rot = Maths::Clamp(rot, 310, 360);
 	}
 	else rot = Maths::Clamp(rot, 310, 410);
-	if (!this.hasTag("dead")) sprite.RotateBy(-rot, Vec2f());
+	if (!this.hasTag("dead")) sprite.RotateBy(rot, Vec2f());
 }
 
 f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitterBlob, u8 customData)
