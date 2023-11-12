@@ -271,9 +271,6 @@ CBlob@ FindStorage(CBlob@ this, u8 team)
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)
 {
-	if (this.getDistanceTo(caller) > 96.0f) return;
-	this.set_bool("shop available", false);
-
 	if (caller is null) return;
 	if (!this.isOverlapping(caller)) return;
 
@@ -289,16 +286,9 @@ void GetButtonsFor(CBlob@ this, CBlob@ caller)
 	}
 }
 
-void onAddToInventory(CBlob@ this,CBlob@ blob) //i'll keep it just to be sure
-{
-	if(blob.getName()!=this.get_string("mat_prop")){
-		this.server_PutOutInventory(blob);
-	}
-}
 bool isInventoryAccessible(CBlob@ this,CBlob@ forBlob)
 {
-	return forBlob.isOverlapping(this) && (forBlob.getCarriedBlob() is null || forBlob.getCarriedBlob().getName()==this.get_string("mat_prop"));
-	//return (forBlob.isOverlapping(this));
+	return (forBlob.isOverlapping(this));
 }
 
 void onCommand(CBlob@ this, u8 cmd, CBitStream @params)

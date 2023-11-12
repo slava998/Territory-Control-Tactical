@@ -1,10 +1,6 @@
-﻿// ArcherShop.as
-
-#include "Requirements.as";
-#include "ShopCommon.as";
+﻿
 #include "Descriptions.as";
 #include "CheckSpam.as";
-#include "CTFShopCommon.as";
 #include "MakeMat.as";
 
 void onInit(CBlob@ this)
@@ -27,25 +23,11 @@ void onInit(CBlob@ this)
 	this.SetMinimapOutsideBehaviour(CBlob::minimap_snap);
 	this.SetMinimapVars("MinimapIcons.png",48,Vec2f(8,8));
 	this.SetMinimapRenderAlways(true);
-
-	AddIconToken("$icon_oil$","Material_Oil.png",Vec2f(16,16),0);
-
-	//SHOP
-	this.set_Vec2f("shop offset",Vec2f(5,5));
-	this.set_Vec2f("shop menu size",Vec2f(1,1));
-	this.set_string("shop description","Pump Jack");
 	
 	if (this.hasTag("name_changed"))
 	{
 		this.setInventoryName(this.get_string("text"));
 		this.set_string("shop description", this.get_string("text"));
-	}
-	
-	this.set_u8("shop icon", 25);
-	{
-		ShopItem@ s = addShopItem(this, "Buy 1 Oil Drum (50 l)", "$mat_oil$", "mat_oil-50", "Buy 50 litres of oil for 400 coins.");
-		AddRequirement(s.requirements, "coin", "", "Coins", 400);
-		s.spawnNothing = true;
 	}
 }
 
@@ -133,8 +115,6 @@ CBlob@ FindStorage(u8 team)
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)
 {
-	if (this.getDistanceTo(caller) > 96.0f) return;
-	this.set_bool("shop available", false);
 
 	if (caller is null) return;
 	if (!this.isOverlapping(caller)) return;
@@ -151,77 +131,13 @@ void GetButtonsFor(CBlob@ this, CBlob@ caller)
 	}
 }
 
-void onAddToInventory(CBlob@ this,CBlob@ blob) //i'll keep it just to be sure
-{
-	if(blob.getName()!="mat_oil"){
-		this.server_PutOutInventory(blob);
-	}
-}
 bool isInventoryAccessible(CBlob@ this,CBlob@ forBlob)
 {
-	return forBlob.isOverlapping(this) && (forBlob.getCarriedBlob() is null || forBlob.getCarriedBlob().getName()=="mat_oil");
-	//return (forBlob.isOverlapping(this));
+	return forBlob.isOverlapping(this);
 }
 
 void onCommand(CBlob@ this, u8 cmd, CBitStream @params)
 {
-	if(cmd == this.getCommandID("shop made item"))
-	{
-		this.getSprite().PlaySound("/ChaChing.ogg");
-
-		u16 caller, item;
-
-		if(!params.saferead_netid(caller) || !params.saferead_netid(item))
-			return;
-
-		string name = params.read_string();
-		CBlob@ callerBlob = getBlobByNetworkID(caller);
-
-		if (callerBlob is null) return;
-
-		if (isServer())
-		{
-			string[] spl = name.split("-");
-
-			if (spl[0] == "coin")
-			{
-				CPlayer@ callerPlayer = callerBlob.getPlayer();
-				if (callerPlayer is null) return;
-
-				callerPlayer.server_setCoins(callerPlayer.getCoins() +  parseInt(spl[1]));
-			}
-			else if (name.findFirst("mat_") != -1)
-			{
-				CPlayer@ callerPlayer = callerBlob.getPlayer();
-				if (callerPlayer is null) return;
-
-				CBlob@ mat = server_CreateBlob(spl[0]);
-
-				if(mat !is null) {
-					mat.Tag("do not set materials");
-					mat.server_SetQuantity(parseInt(spl[1]));
-					if(!callerBlob.server_PutInInventory(mat)) {
-						mat.setPosition(callerBlob.getPosition());
-					}
-				}
-			}
-			else
-			{
-				CBlob@ blob = server_CreateBlob(spl[0], callerBlob.getTeamNum(), this.getPosition());
-
-				if (blob is null) return;
-
-				if (!blob.canBePutInInventory(callerBlob))
-				{
-					callerBlob.server_Pickup(blob);
-				}
-				else if (callerBlob.getInventory() !is null && !callerBlob.getInventory().isFull())
-				{
-					callerBlob.server_PutInInventory(blob);
-				}
-			}
-		}
-	}
 	if (cmd == this.getCommandID("write"))
 	{
 		if (isServer())
