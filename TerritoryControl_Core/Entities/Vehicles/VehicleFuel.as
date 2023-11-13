@@ -2,7 +2,7 @@ void TakeFuel(CBlob@ this, f32 amount)
 {
 	f32 max_fuel = this.get_f32("max_fuel");
 	this.set_f32("fuel_count", Maths::Max(0, Maths::Min(max_fuel, this.get_f32("fuel_count") - amount)));
-	this.Sync("fuel_count", true);
+	//this.Sync("fuel_count", true);
 }
 
 f32 GiveFuel(CBlob@ this, f32 amount, f32 modifier)
