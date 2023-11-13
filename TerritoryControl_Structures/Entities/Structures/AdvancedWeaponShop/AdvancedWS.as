@@ -98,7 +98,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Soviet PPSH", "$ppsh$", "ppsh", "WW2 most-used russian weapon.\n\nStrong at short range, but weak at long range.$icon_pistolammo$\n\nAmmo Capacity = 72\n\nDamage = 0.5\n\nFire Rate = 15");
+		ShopItem@ s = addShopItem(this, "'The Rattler' Model 871", "$rattler$", "rattler", "Rapid-firing submachinegun.\n\nReally strong at short range, but weak at long range.$icon_pistolammo$\n\nAmmo Capacity = 72\n\nDamage = 0.8\n\nFire Rate = 15");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 150);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 10);
 		AddRequirement(s.requirements, "coin", "", "Coins", 750);
@@ -110,7 +110,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "AKM", "$bnak$", "bnak", "Popular russian weapon.\n\nPerfect value for money. $icon_rifleammo$\n\nAmmo Capacity = 20\n\nDamage = 1.5\n\nFire Rate = 10");
+		ShopItem@ s = addShopItem(this, "Infantry Carbine mc.II", "$infantrycarbine$", "infantrycarbine", "A powerful automatic carbine with good accuracy but high recoil.\n\nOutranges smgs and can rival rifles. $icon_rifleammo$\n\nAmmo Capacity = 20\n\nDamage = 1.5\n\nFire Rate = 10");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 250);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 12);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 2);
@@ -123,21 +123,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "RP-46", "$rp46$", "rp46", "Powerful machinegun with slow fire rate and medium accuracy.\n\nGood for medium range combat and long shootouts. $icon_rifleammo$\n\nAmmo Capacity = 50\n\nDamage = 3.25\n\nFire Rate = 5");
-		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 100);
-		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 16);
-		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 2);
-		AddRequirement(s.requirements, "blob", "mat_copperingot", "Copper Ingot", 10);
-		AddRequirement(s.requirements, "coin", "", "Coins", 2000);
-		
-		s.customButton = true;
-		s.buttonwidth = 2;
-		s.buttonheight = 1;
-
-		s.spawnNothing = true;
-	}
-	{
-		ShopItem@ s = addShopItem(this, "TKB-521", "$tkb521$", "tkb521", "A nice machinegun with a big magazine and high damage.\n\nDeals a lot of damage and is good for suppressive fire. $icon_rifleammo$\n\nAmmo Capacity = 100\n\nDamage = 1.5\n\nFire Rate = 15");
+		ShopItem@ s = addShopItem(this, "'Carlus' HMG MK.1", "$carlus$", "carlus", "An excellent weapon for suppressing enemy infantry and artillery.\n\nSit down to increase accuracy. $icon_gatlingammo$\n\nAmmo Capacity = 250\n\nDamage = 1.5\n\nFire Rate = 15");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 150);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 12);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 8);
@@ -165,7 +151,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{	
-		ShopItem@ s = addShopItem(this, "Sniper Rifle Dragunova", "$svd$", "svd", "A strong semi-auto sniper rifle.\n\nDeals full damage only when shooting from a long distance.$icon_sniperammo$\n\nAmmo Capacity = 10\n\nDamage = 9\n\nFire Rate = 0.6");
+		ShopItem@ s = addShopItem(this, "'The Vindicator' Sniper Rifle", "$vindicator$", "vindicator", "A sniper rifle with fast bullets and a good sight.\n\nDeals full damage only when shooting from a long distance.$icon_sniperammo$\n\nAmmo Capacity = 10\n\nDamage = 9\n\nFire Rate = 0.6");
 		AddRequirement(s.requirements, "blob",  "mat_wood", "Wood", 200);
 		AddRequirement(s.requirements, "blob", "mat_ironingot", "Iron Ingot", 8);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 8);
@@ -174,7 +160,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Nitro 700", "$nitro700_icon$", "nitro700", "Strong gun used to take down buffalos, not badgers.\n\nPerfect for aggressive attack. $icon_sniperammo$\n\nPress [RMB] to stab with bayonet which is good against shields.\n\nAmmo Capacity = 2\n\nDamage = 6.8\n\nFire Rate = 1");
+		ShopItem@ s = addShopItem(this, "Heavy RIfle", "$heavyrifle_icon$", "heavyrifle", "An old but reliable large-caliber rifle, originally used by sailors.\n\nPerfect for aggressive attack. $icon_sniperammo$\n\nPress [RMB] to stab with bayonet which is good against shields.\n\nAmmo Capacity = 2\n\nDamage = 6.8\n\nFire Rate = 1");
 		AddRequirement(s.requirements, "blob", "mat_wood", "Wood", 350);
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 8);
 		AddRequirement(s.requirements, "blob", "mat_copperingot", "Copper Ingot", 8);
@@ -187,7 +173,7 @@ void onInit(CBlob@ this)
 		s.spawnNothing = true;
 	}
 	{
-		ShopItem@ s = addShopItem(this, "Gauss Rifle", "$icon_gaussrifle$", "gaussrifle", "A modified toy used to kill people.\n\nIdeal for breaking through walls and has strong knockback.\nAmmo Capacity = 1\n\nDamage = 7.56\n\nFire Rate = 0.75\n\nUses Steel Ingots.");
+		ShopItem@ s = addShopItem(this, "Gauss Rifle", "$icon_gaussrifle$", "gaussrifle", "A modified toy used to kill people.\n\nPerfect for breaking through walls.\nAmmo Capacity = 1\n\nDamage = 7.56\n\nFire Rate = 0.75\n\nUses Steel Ingots.");
 		AddRequirement(s.requirements, "blob", "mat_steelingot", "Steel Ingot", 6);
 		AddRequirement(s.requirements, "blob", "mat_copperingot", "Copper Ingot", 8);
 		AddRequirement(s.requirements, "blob", "mat_mithril", "Mithril", 40);
@@ -347,9 +333,8 @@ void addTokens(CBlob@ this)
 	int teamnum = this.getTeamNum();
 	if (teamnum > 6) teamnum = 7;
 
-	AddIconToken("$rp46$", "RP-46.png", Vec2f(34, 12), 0, teamnum);
-	AddIconToken("$tkb521$", "TKB-521.png", Vec2f(34, 14), 0, teamnum);
-	AddIconToken("$nitro700_icon$", "Nitro700_icon.png", Vec2f(38, 12), 0, teamnum);
+	AddIconToken("$carlus$", "Carlus.png", Vec2f(32, 12), 0, teamnum);
+	AddIconToken("$heavyrifle_icon$", "heavyrifle_icon.png", Vec2f(34, 8), 0, teamnum);
 	AddIconToken("$icon_grenadelauncher$", "PumpActionGrenadeLauncher.png", Vec2f(22, 9), 0, teamnum);
 	AddIconToken("$icon_thunderbolt$", "Thunderbolt.png", Vec2f(24, 10), 0, teamnum);
 	AddIconToken("$icon_mine$", "Mine.png", Vec2f(16, 16), 1, teamnum);

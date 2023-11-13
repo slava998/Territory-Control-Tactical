@@ -62,7 +62,7 @@ void onInit(CBlob@ this)
 	settings.G_BACK_T = 2; //Should we recoil the arm back time? (aim goes up, then back down with this, if > 0, how long should it last)
 
 	//Sound
-	settings.FIRE_SOUND = "Nitro700Fire.ogg"; //Sound when shooting
+	settings.FIRE_SOUND = "HeavyRifle_Fire.ogg"; //Sound when shooting
 	settings.RELOAD_SOUND = "BoomstickReload.ogg"; //Sound when reloading
 
 	//Offset
@@ -75,7 +75,6 @@ void onInit(CBlob@ this)
 	this.Tag("powerful");
 	this.set_string("CustomSoundPickup", "Boomstick_Pickup.ogg");
 	this.set_f32("CustomBulletLength", 70.0f);
-	this.Tag("CustomBoomstickCaseDrop");
 }
 
 void onTick(CBlob@ this)
