@@ -19,6 +19,7 @@ void onInit(CBlob@ this)
 	this.set_u8("cooldown_time", 0);
 
 	this.Tag("pushedByDoor");
+	this.Tag("RemoveOnCleaning");
 	this.getCurrentScript().runFlags |= Script::tick_not_ininventory;
 }
 

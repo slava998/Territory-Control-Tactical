@@ -12,6 +12,7 @@ void onInit(CBlob@ this)
 {
 	this.Tag("no shitty rotation reset");
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 
 	AttachmentPoint@ ap = this.getAttachments().getAttachmentPointByName("PICKUP");
 	if (ap !is null)

@@ -2,6 +2,7 @@ void onInit(CBlob@ this)
 {
 	this.getShape().SetRotationsAllowed(true);
 	this.addCommandID("consume");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

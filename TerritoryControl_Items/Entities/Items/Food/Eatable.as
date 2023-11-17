@@ -3,6 +3,7 @@ const string heal_id = "heal command";
 
 void onInit(CBlob@ this)
 {
+	this.Tag("RemoveOnCleaning");
 	if (!this.exists("eat sound"))
 	{
 		this.set_string("eat sound", "/Eat.ogg");

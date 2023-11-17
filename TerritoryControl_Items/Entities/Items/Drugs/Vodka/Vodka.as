@@ -2,6 +2,7 @@ void onInit(CBlob@ this)
 {
 	this.addCommandID("consume");
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

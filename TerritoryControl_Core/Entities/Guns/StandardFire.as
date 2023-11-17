@@ -48,6 +48,7 @@ void onInit(CBlob@ this)
 	this.Tag("weapon");
 	this.Tag("no shitty rotation reset");
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 
 	GunSettings@ settings;
 	this.get("gun_settings", @settings);

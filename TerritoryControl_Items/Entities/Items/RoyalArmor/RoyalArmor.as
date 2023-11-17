@@ -8,6 +8,7 @@ void onInit(CBlob@ this)
 	this.Tag("armor");
 	this.Tag("classchanger");
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

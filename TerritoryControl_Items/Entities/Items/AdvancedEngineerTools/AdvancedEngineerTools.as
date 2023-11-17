@@ -6,6 +6,7 @@ void onInit(CBlob@ this)
 	this.Tag("kill on use");
 	this.Tag("dangerous");
 	this.Tag("classchanger");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

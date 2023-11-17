@@ -82,6 +82,7 @@ LootItem@[] a_items =
 void onInit(CBlob@ this)
 {
 	this.addCommandID("box_unpack");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

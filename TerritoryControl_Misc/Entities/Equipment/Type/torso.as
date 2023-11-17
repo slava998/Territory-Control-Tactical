@@ -1,6 +1,7 @@
 void onInit(CBlob@ this)
 {
 	this.Tag("torso");
+	this.Tag("RemoveOnCleaning");
 	
 	if (this.getName() == "suicidevest" || this.getName() == "keg")
 		this.Tag("explosive");

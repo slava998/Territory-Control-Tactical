@@ -4,6 +4,7 @@ const f32 max_distance = 256.0f;
 
 void onInit(CBlob@ this)
 {
+	this.Tag("RemoveOnCleaning");
 	this.Tag("no shitty rotation reset");
 
 	//this.SetLight(true);

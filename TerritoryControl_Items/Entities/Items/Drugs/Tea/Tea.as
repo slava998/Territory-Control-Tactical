@@ -4,6 +4,7 @@ void onInit(CBlob@ this)
 	this.Tag("hopperable");
 	this.Tag("forcefeed_always");
 	this.Tag("dartguninjectable");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

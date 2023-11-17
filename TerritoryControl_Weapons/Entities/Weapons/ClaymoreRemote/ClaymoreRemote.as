@@ -2,6 +2,7 @@ void onInit(CBlob@ this)
 {
 	this.addCommandID("detonate");
 	this.Tag("automat_activable");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

@@ -2,6 +2,7 @@
 void onInit( CBlob@ this )
 {
 	this.addCommandID("useitem");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

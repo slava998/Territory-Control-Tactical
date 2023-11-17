@@ -8,6 +8,7 @@ void onInit(CBlob@ this)
 	if (getRules().hasTag("tournament") && isServer()) this.server_Die();
 	this.Tag("ignore fall");
 	this.set_u32("next attack", 0);
+	this.Tag("RemoveOnCleaning");
 
 	AttachmentPoint@ ap = this.getAttachments().getAttachmentPointByName("PICKUP");
 	if (ap !is null)
@@ -16,36 +17,26 @@ void onInit(CBlob@ this)
 	}
 }
 
-string[] getRestrictedPlayers()
+//Point and laugh at how pathetic Noah is, he forbade these people to enslave at the code level because they often slaved him. 
+/*string[] getRestrictedPlayers()
 {
 	string[] players = {
 		"Killy07",
 		"ShotgunHobo"
 	};
 	return players;
-}
+}*/
 
 void onTick(CBlob@ this)
 {	
 	if (this.isAttached())
 	{
-		bool restrict = false;
 		AttachmentPoint@ point = this.getAttachments().getAttachmentPointByName("PICKUP");
 		if(point is null){return;}
 		CBlob@ holder = point.getOccupied();
 		
 		if (holder is null){return;}
 		u8 team = holder.getTeamNum();
-
-		if (holder.getPlayer() !is null)
-		{
-			string[] players = getRestrictedPlayers();
-			for (u16 i = 0; i < players.length; i++)
-			{
-				if (players[i] == holder.getPlayer().getUsername())
-					restrict = true;
-			}
-		}
 		
 		TeamData@ team_data;
 		GetTeamData(team, @team_data);
@@ -106,28 +97,13 @@ void onTick(CBlob@ this)
 									
 									if (slave !is null)
 									{
-										if (!restrict)
-										{
-											if (blob.getPlayer() !is null) slave.server_SetPlayer(blob.getPlayer());
-											slave.set_string("sleeper_name", blob.get_string("sleeper_name"));
-											slave.set_bool("sleeper_sleeping", blob.get_bool("sleeper_sleeping"));
-											slave.Sync("sleeper_name", true);
-											slave.Sync("sleeper_sleeping", true);
-											blob.server_Die();
-											this.server_Die();
-										}
-										else
-										{
-											this.getSprite().PlaySound("klaxon" + XORRandom(4) + ".ogg", 0.8f, 1.0f);
-											this.getSprite().PlaySound("klaxon" + XORRandom(4) + ".ogg", 0.8f, 1.0f);
-											if (holder.getPlayer() !is null) slave.server_SetPlayer(holder.getPlayer());
-											slave.set_string("sleeper_name", holder.get_string("sleeper_name"));
-											slave.set_bool("sleeper_sleeping", holder.get_bool("sleeper_sleeping"));
-											slave.Sync("sleeper_name", true);
-											slave.Sync("sleeper_sleeping", true);
-											holder.server_Die();
-											this.server_Die();
-										}
+										if (blob.getPlayer() !is null) slave.server_SetPlayer(blob.getPlayer());
+										slave.set_string("sleeper_name", blob.get_string("sleeper_name"));
+										slave.set_bool("sleeper_sleeping", blob.get_bool("sleeper_sleeping"));
+										slave.Sync("sleeper_name", true);
+										slave.Sync("sleeper_sleeping", true);
+										blob.server_Die();
+										this.server_Die();
 									}
 								}
 								

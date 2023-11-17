@@ -1,6 +1,7 @@
 void onInit(CBlob@ this)
 {
 	this.addCommandID("use");
+	this.Tag("RemoveOnCleaning");
 
 	if (isServer() && !this.exists("value")) this.set_u16("value", XORRandom(50000));
 }

@@ -10,6 +10,7 @@ void onInit(CBlob@ this)
 	this.set_string("forcefeed_text", "Inject "+this.getInventoryName()+"!");
 
 	this.Tag("dartguninjectable");
+	this.Tag("RemoveOnCleaning");
 }
 
 void GetButtonsFor(CBlob@ this, CBlob@ caller)

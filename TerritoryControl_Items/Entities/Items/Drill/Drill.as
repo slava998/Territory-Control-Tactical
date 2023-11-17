@@ -60,6 +60,7 @@ void onInit(CBlob@ this)
 	this.set_u32("hittime", 0);
 	this.Tag("place norotate"); // required to prevent drill from locking in place (blame builder code :kag_angry:)
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 
 	//this.Tag("place45"); // old 45 degree angle lock
 	//this.set_s8("place45 distance", 1);

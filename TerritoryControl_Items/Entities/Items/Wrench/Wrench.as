@@ -6,6 +6,7 @@ void onInit(CBlob@ this)
 {
 	this.Tag("ignore fall");
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 	this.set_u32("next attack", 0);
 
 	AttachmentPoint@ ap = this.getAttachments().getAttachmentPointByName("PICKUP");

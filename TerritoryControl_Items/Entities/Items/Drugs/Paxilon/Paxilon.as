@@ -4,6 +4,7 @@ void onInit(CBlob@ this)
 	this.getShape().SetRotationsAllowed(true);
 	this.addCommandID("consume");
 	this.Tag("hopperable");
+	this.Tag("RemoveOnCleaning");
 	if (this.getName() != "paxilonpill")
 	{
 		this.Tag("syringe");

@@ -15,6 +15,7 @@ const f32 inp_ratio = 0.50f;
 void onInit(CBlob@ this)
 {
 	// this.Tag("aerial");
+	this.Tag("RemoveOnCleaning");
 	this.Tag("explosive");
 
 	this.set_f32("bomb angle", 90);

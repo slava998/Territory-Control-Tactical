@@ -25,6 +25,7 @@ void onInit(CBlob@ this)
 
 	this.Tag("log");
 	this.Tag("pushedByDoor");
+	this.Tag("RemoveOnCleaning");
 }
 
 //collide with vehicles and structures	- hit stuff if thrown
