@@ -234,3 +234,8 @@ void onDetach(CBlob@ this, CBlob@ detached, AttachmentPoint @detachedPoint)
 	this.set_bool("beginReload", false);
 	this.set_bool("doReload", false);
 }
+
+void onThisAddToInventory(CBlob@ this, CBlob@ inventoryBlob)
+{
+	if(this.exists("CustomAccelerationSpeed")) this.set_u16("Burst", 0);
+}
