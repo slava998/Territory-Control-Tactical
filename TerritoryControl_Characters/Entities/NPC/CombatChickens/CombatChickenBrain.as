@@ -93,7 +93,7 @@ void onTick(CBrain@ this)
 	
 		if (can_search)
 		{
-			this.getCurrentScript().tickFrequency = 30;
+			this.getCurrentScript().tickFrequency = 60;
 			
 			// print("search");
 			
@@ -279,7 +279,7 @@ void onTick(CBrain@ this)
 			}
 		
 			ResetTarget(this);
-			this.getCurrentScript().tickFrequency = 30;
+			this.getCurrentScript().tickFrequency = 60;
 			return;
 		}
 	}
