@@ -466,6 +466,8 @@ void onCommand(CBlob@ this, u8 cmd, CBitStream@ params)
 
 f32 onHit(CBlob@ this, Vec2f worldPoint, Vec2f velocity, f32 damage, CBlob@ hitterBlob, u8 customData)
 {
+	if (this.isAttached()) return 0;
+
 	if (customData == Hitters::fire)
 	{
 		this.set_u8(heat_prop, heat_max);
