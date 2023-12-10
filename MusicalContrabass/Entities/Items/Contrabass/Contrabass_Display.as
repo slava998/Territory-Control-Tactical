@@ -1,4 +1,3 @@
-#define CLIENT_ONLY
 
 string[] note_names = 
 {"B","C","C#","D","D#","E","F","F#","G","G#","A","A#"};

@@ -27,8 +27,3 @@ void onInit(CBlob@ this)
 		}
 	}
 }
-
-void onThisAddToInventory(CBlob@ this, CBlob@ inventoryBlob)
-{
-	if (this !is null) this.inventoryIconFrame = this.get_u8("track_id");
-}
